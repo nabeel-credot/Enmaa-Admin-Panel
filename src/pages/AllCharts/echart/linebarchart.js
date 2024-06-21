@@ -36,7 +36,7 @@ class LineBar extends Component {
       },
     color: ['#2ab57d', '#5156be', '#fd625e'],
     legend: {
-        data:['Evaporation','Precipitation','Average temperature'],
+        data:['Property Enquire','Inventors Enquire','Average Enquiries'],
         textStyle: {color: '#858d98'}
     },
     xAxis: [
@@ -56,7 +56,7 @@ class LineBar extends Component {
     yAxis: [
         {
             type: 'value',
-            name: 'Water volume',
+            name: 'Enquire',
             min: 0,
             max: 250,
             interval: 50,
@@ -71,12 +71,12 @@ class LineBar extends Component {
                 }
             },
             axisLabel: {
-                formatter: '{value} ml'
+                formatter: '{value} '
             }
         },
         {
             type: 'value',
-            name: 'Temperature',
+            name: 'periods',
             min: 0,
             max: 25,
             interval: 5,
@@ -91,23 +91,23 @@ class LineBar extends Component {
                 }
             },
             axisLabel: {
-                formatter: '{value} Ã‚Â°C'
+                formatter: '{value}'
             }
         }
     ],
     series: [
         {
-            name:'Evaporation',
+            name:'Property Enquire',
             type:'bar',
             data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2]
         },
         {
-            name:'Precipitation',
+            name:'Inventors Enquire',
             type:'bar',
             data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2]
         },
         {
-            name:'Average Temperature',
+            name:'Average Enquiries',
             type:'line',
             yAxisIndex: 1,
             data:[2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4]

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ReactApexChart from "react-apexcharts"
+// import ReactApexChart from "react-apexcharts"
 
 //import Breadcrumbs
 import Breadcrumbs from "../../components/Common/Breadcrumb";
@@ -17,9 +17,9 @@ import CountUp from "react-countup";
 
 /** import Mini Widget data */
 import { WidgetsData } from "../../common/data/dashboard";
-import Doughnut from "../AllCharts/echart/doughnutchart";
+// import Doughnut from "../AllCharts/echart/doughnutchart";
 import {  CardHeader } from "reactstrap";
-import LineBar from "../AllCharts/echart/linebarchart";
+// import LineBar from "../AllCharts/echart/linebarchart";
 
 // import WalletBalance from './WalletBalance';
 // import InvestedOverview from './InvestedOverview';
@@ -146,7 +146,7 @@ const Dashboard = () => {
                         ))}
 
                     </Row>
-                    <Row>
+                    {/* <Row1>
                     <Col xl="6">
               <Card>
                 <CardHeader>
@@ -172,7 +172,7 @@ const Dashboard = () => {
               </Card>
             </Col>
 
-                    </Row>
+                    </Row1> */}
                     {/* <Row1>
                         <WalletBalance />
                         <Col>

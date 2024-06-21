@@ -10,7 +10,7 @@ import Pagination from "../../components/Common/Pagination"
 import logoSvg from "../../assets/images/logo-sm.png";
 import { Link } from "react-router-dom"
 
-const ResponsiveTables = () => {
+const TeamTable = () => {
   //meta title
   document.title = "Responsive Table | enmaa.com";
 
@@ -18,11 +18,8 @@ const ResponsiveTables = () => {
     <React.Fragment>
       <div className="page-content">
         <div className="container-fluid">
-          <Breadcrumbs title="Tables" breadcrumbItem="Home page" />
-          <form>
-            <label>seo title</label>
-            <label>slug</label>
-            </form>
+          <Breadcrumbs title="Tables" breadcrumbItem="Enquire page" />
+
           <Row>
             <Col>
               <Card>
@@ -42,12 +39,11 @@ const ResponsiveTables = () => {
                       >
                         <Thead>
                           <Tr>
-                            <Th data-priority="1">section</Th>
-                            <Th data-priority="1">Title</Th>
-                            <Th data-priority="3">Sub Title</Th>
-                            <Th data-priority="1">description </Th>
-                            <Th data-priority="3">Banner</Th>
-                            <Th data-priority="3">Action</Th>
+                            <Th data-priority="1">Name</Th>
+                            <Th data-priority="1">Employee Id</Th>
+                            <Th data-priority="3">Position</Th>
+                            <Th data-priority="1">Field</Th>
+                            <Th data-priority="3">Photo</Th>
                           </Tr>
                         </Thead>
                         <Tbody>
@@ -60,7 +56,7 @@ const ResponsiveTables = () => {
                               <Td>{rowData.time}</Td>
                               <Td>{rowData.change}</Td>
                               <Td className=""><img src={logoSvg} alt="" height="24" /></Td>
-                              <Td className="d-flex align-items-center justify-content-center"><Link to="/form-elements"className="btn btn-primary ">Edit</Link></Td>
+                              <Td className="d-flex align-items-center justify-content-center"><Link to="/form-elements"className="btn btn-primary">Edit</Link></Td>
                            
                             </Tr>
                           ))}
@@ -85,4 +81,4 @@ const ResponsiveTables = () => {
   )
 }
 
-export default ResponsiveTables
+export default TeamTable

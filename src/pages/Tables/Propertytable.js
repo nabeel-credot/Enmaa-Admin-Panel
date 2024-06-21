@@ -10,7 +10,7 @@ import Pagination from "../../components/Common/Pagination"
 import logoSvg from "../../assets/images/logo-sm.png";
 import { Link } from "react-router-dom"
 
-const ResponsiveTables = () => {
+const Propertytable = () => {
   //meta title
   document.title = "Responsive Table | enmaa.com";
 
@@ -18,11 +18,8 @@ const ResponsiveTables = () => {
     <React.Fragment>
       <div className="page-content">
         <div className="container-fluid">
-          <Breadcrumbs title="Tables" breadcrumbItem="Home page" />
-          <form>
-            <label>seo title</label>
-            <label>slug</label>
-            </form>
+          <Breadcrumbs title="Tables" breadcrumbItem="Enquire " />
+
           <Row>
             <Col>
               <Card>
@@ -42,12 +39,11 @@ const ResponsiveTables = () => {
                       >
                         <Thead>
                           <Tr>
-                            <Th data-priority="1">section</Th>
-                            <Th data-priority="1">Title</Th>
-                            <Th data-priority="3">Sub Title</Th>
+                            <Th data-priority="1">Enquire ID</Th>
+                            <Th data-priority="1">Property ID</Th>
                             <Th data-priority="1">description </Th>
-                            <Th data-priority="3">Banner</Th>
-                            <Th data-priority="3">Action</Th>
+                            <Th data-priority="3">Image</Th>
+                            <Th data-priority="3"></Th>
                           </Tr>
                         </Thead>
                         <Tbody>
@@ -57,10 +53,9 @@ const ResponsiveTables = () => {
                                  {rowData.companyName}
                               </Th>
                               <Td>{rowData.price}</Td>
-                              <Td>{rowData.time}</Td>
                               <Td>{rowData.change}</Td>
                               <Td className=""><img src={logoSvg} alt="" height="24" /></Td>
-                              <Td className="d-flex align-items-center justify-content-center"><Link to="/form-elements"className="btn btn-primary ">Edit</Link></Td>
+                              <Td className="d-flex align-items-center justify-content-center"><Link to="/"className="btn btn-primary">View</Link></Td>
                            
                             </Tr>
                           ))}
@@ -85,4 +80,4 @@ const ResponsiveTables = () => {
   )
 }
 
-export default ResponsiveTables
+export default Propertytable

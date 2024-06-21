@@ -38,7 +38,7 @@ const EChart = () => {
             <Col xl="6">
               <Card>
                 <CardHeader>
-                  <h4 className="card-title mb-0">Mix Line-Bar</h4>
+                  <h4 className="card-title mb-0"> Enquire Line-Bar</h4>
                 </CardHeader>
                 <CardBody>
                   <div id="mix-line-bar" className="e-chart">

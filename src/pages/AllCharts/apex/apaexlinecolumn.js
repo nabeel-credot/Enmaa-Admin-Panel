@@ -13,7 +13,7 @@ const Apaexlinecolumn = () => {
     },
     {
       name: "Free Cash Flow",
-      data: [37, 42, 38, 260, 47, 50, 54, 55, 43],
+      data: [37, 42, 38, 26, 47, 50, 54, 55, 43],
     },
   ];
   const options = {

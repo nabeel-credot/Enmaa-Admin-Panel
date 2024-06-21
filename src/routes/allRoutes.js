@@ -2,7 +2,19 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 
 //Dashboard
-import Dashboard from "../pages/Dashboard/index";
+import Dashboard from "../page/Dashboard/Dashboard";
+// CMS
+//HOME
+import Hometable from "../page/CMS/Home/Hometable";
+import Section1 from "../page/CMS/Home/Section/Section1form";
+import Section2 from "../page/CMS/Home/Section/Section2form";
+import Section3 from "../page/CMS/Home/Section/Section3form";
+import Section4 from "../page/CMS/Home/Section/Section4form";
+import Section5 from "../page/CMS/Home/Section/Section5form";
+import Section6 from "../page/CMS/Home/Section/Section6form";
+import Section7 from "../page/CMS/Home/Section/Section7form";
+import Section8 from "../page/CMS/Home/Section/Section8form";
+import Section9 from "../page/CMS/Home/Section/Section9form";
 
 // Calendar
 import Calendar from "../pages/Calendar/index";
@@ -77,6 +89,8 @@ import FormMask from "../pages/Forms/FormMask";
 import BasicTable from "../pages/Tables/BasicTables";
 import DatatableTables from "../pages/Tables/DatatableTables";
 import ResponsiveTables from "../pages/Tables/ResponsiveTables";
+import Enquiretable from "../pages/Tables/Propertytable";
+import TeamTable from "../pages/Tables/TeamTable";
 import EditableTables from "../pages/Tables/EditableTables";
 
 //Charts
@@ -117,6 +131,21 @@ const userRoutes = [
   { path: "/", component: <Dashboard/> },
   //dashboard
   { path: "/dashboard", component: <Dashboard/> },
+  { path: "/home", component:  <Hometable/>},
+  { path: "/Section-1", component:  <Section1/>},
+  { path: "/Section-2", component:  <Section2/>},
+  { path: "/Section-3", component:  <Section3/>},
+  { path: "/Section-4", component:  <Section4/>},
+  { path: "/Section-5", component:  <Section5/>},
+
+
+  { path: "/Section-6", component:  <Section6/>},
+  { path: "/Section-7", component:  <Section7/>},
+  { path: "/Section-8", component:  <Section8/>},
+  { path: "/Section-9", component:  <Section9/>},
+
+  { path: "/our-team", component:  <TeamTable/>},
+
 
   //profile
   { path: "/profile", component: <UserProfile/> },
@@ -182,7 +211,11 @@ const userRoutes = [
   { path: "/extended-notifications", component: <Notifications/> },
 
   //Forms
-  { path: "/form-elements", component:  <ResponsiveTables/>},
+  { path: "/section", component:  <FormElements/>},
+  { path: "/enquire-property", component:  <Enquiretable/>},
+  { path: "/home", component:  <ResponsiveTables/>},
+  { path: "/our-team", component:  <TeamTable/>},
+
   { path: "/form-validation", component: <FormValidation/> },
   { path: "/form-advanced", component: <AdvancedPlugins/> },
   { path: "/form-editors", component: <FormEditors/> },

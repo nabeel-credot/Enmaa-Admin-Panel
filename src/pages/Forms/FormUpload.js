@@ -15,7 +15,7 @@ import Breadcrumbs from "../../components/Common/Breadcrumb";
 
 import { Link } from "react-router-dom";
 
-const FormUpload = () => {
+const FormUpload = (props) => {
 
   //meta title
   document.title = "Form File Upload | enmaa.com";
@@ -55,7 +55,7 @@ const FormUpload = () => {
             <Col className="col-12">
               <Card>
                 <CardHeader>
-                  <h4 className="card-title">Dropzone</h4>
+                  <h3 > {props.name}</h3>
                   <p className="card-title-desc">
                     DropzoneJS is an open source library that provides
                     drag’n’drop file uploads with image previews.

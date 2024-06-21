@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-
 //Import Icons
 import FeatherIcon from "feather-icons-react";
 
@@ -85,7 +84,7 @@ const Header = props => {
 
               <Link to="/dashboard" className="logo logo-light">
                 <span className="logo-sm">
-                  <img src={logoSvg} alt="" height="24" />
+                  <img src={logoSvg} alt={logoSvg} height="24" />
                 </span>
                 <span className="logo-lg">
                   <img src={logoSvg} alt="" height="24" /> <span className="logo-txt">Enma'a</span>
@@ -109,7 +108,7 @@ const Header = props => {
             </form> */}
           </div>
 
-          <div className="d-flex">
+          {/* <div1 className="d-flex">
             <div className="dropdown d-inline-block d-lg-none ms-2">
               <button type="button" className="btn header-item" id="page-header-search-dropdown"
                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -133,8 +132,8 @@ const Header = props => {
               </div>
             </div>
 
-          </div>
-          <div className="d-flex">
+          </div1> */}
+          {/* <div1 className="d-flex">
             <div className="dropdown d-inline-block d-lg-none ms-2">
               <button
                 onClick={() => {
@@ -172,7 +171,7 @@ const Header = props => {
                   </div>
                 </form>
               </div>
-            </div>
+            </div> */}
 
             {/* <LanguageDropdown /> */}
 
@@ -243,7 +242,7 @@ const Header = props => {
             {/* </Dropdown> */}
 
             {/* <NotificationDropdown /> */}
-            <div
+            {/* <div1
               onClick={() => {
                 dispatch(showRightSidebarAction(!showRightSidebar));
               }}
@@ -258,10 +257,10 @@ const Header = props => {
                   className="icon-lg"
                 />
               </button>
-            </div>
-            <ProfileMenu />
+            </div1> */}
+            {/* <ProfileMenu /> */}
 
-          </div>
+          {/* </div1> */}
         </div>
       </header>
 
