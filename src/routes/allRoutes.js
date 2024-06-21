@@ -157,7 +157,7 @@ const userRoutes = [
 
 
   //CMS
-  { path: "/annual-report", component: <Chat/> },
+  { path: "/#annual-report", component: <Chat/> },
   //Chat
   { path: "/apps-chat", component: <Chat/> },
 
