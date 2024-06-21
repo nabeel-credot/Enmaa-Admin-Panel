@@ -1,49 +1,28 @@
-import React, { useState } from "react";
-
+import React from 'react';
 import { Col, Input, Label, Row } from 'reactstrap';
-import { Card, CardBody, CardHeader, Container,Button} from "reactstrap"
+import { Card, CardBody, CardHeader, Container} from "reactstrap"
 import FormUpload from './../../../../pages/Forms/FormUpload.js';
 import { Link } from "react-router-dom"
 import Breadcrumbs from './../../../../components/Common/Breadcrumb.js';
-
-const Section4form = () => {
-    const [inputs, setInputs] = useState([{ id: 1, value: '' }]);
-  
-    const handleAddInput = () => {
-      setInputs([...inputs, { id: inputs.length + 1, value: '' }]);
-    };
-  
-    const handleRemoveInput = (id) => {
-      setInputs(inputs.filter(input => input.id !== id));
-    };
-  
-    const handleChange = (id, event) => {
-      const newInputs = inputs.map(input => {
-        if (input.id === id) {
-          return { ...input, value: event.target.value };
-        }
-        return input;
-      });
-      setInputs(newInputs);
-    };
+const Section10form = () => {
     return (
         <React.Fragment>
             <div className="page-content">
                 <Container fluid>
                     {/* Render Breadcrumbs */}
-                    <div className='d-flex justify-content-between'>
+                    <div1 className='d-flex justify-content-between'>
                     
-                    <div className=''><Link to="/home" className='icon-demo-content mb-4'><i className='fas fa-arrow-left'></i></Link><Breadcrumbs title="Forms" breadcrumbItem=" Section 6" /></div>
+                    <div className=''><Link to="/home" className='icon-demo-content mb-4'><i className='fas fa-arrow-left'></i></Link><Breadcrumbs title="Forms" breadcrumbItem=" Section 10" /></div>
                     <div className='d-flex flex-end gap-3 p-4'>
                         
             <Link to="/form-elements"className=" d-flex align-items-center gap-2 btn btn-outline-light"><i className="mdi mdi-file-document"></i>Guidelines</Link>
             <Link to="https://enmaa-previews.vercel.app/" className=" d-flex align-items-center gap-2 btn btn-outline-light" target="_blank"><i className="mdi mdi-open-in-new"></i>Preview</Link></div>
-                </div>
+                </div1>
                     <Row>
                         <Col xs={12}>
                             <Card>
                                 <CardHeader>
-                                    <h4 className="card-title">About Section</h4>
+                                    <h4 className="card-title">Banner Section</h4>
                                     <p className="card-title-desc">Here you can change the each <code> HEADING & IMAGE</code> </p>
                                 </CardHeader>
                                 <CardBody className="p-4">
@@ -129,43 +108,14 @@ const Section4form = () => {
                     </div>
 
                 </Col>
-                <div>
-      {inputs.map((input, index) => (
-        <Row key={input.id} className="mb-3">
-          <Col lg={8}>
-            <div className="mb-3">
-              <Label htmlFor={`input-${input.id}`} className="form-Label">Points</Label>
-              <Input
-                className="form-control"
-                type="text"
-                value={input.value}
-                id={`input-${input.id}`}
-                onChange={(event) => handleChange(input.id, event)}
-              />
-            </div>
-          </Col>
-          <Col lg={4} className="d-flex gap-2 align-items-center">
-            <Button
-              className="d-flex align-items-center gap-2"
-              onClick={() => handleRemoveInput(input.id)}
-              disabled={inputs.length === 1}
-            >
-              -
-            </Button>
-            {index === inputs.length - 1 && (
-              <Button
-                className="d-flex align-items-center gap-2"
-                onClick={handleAddInput}
-              >
-               +
-              </Button>
-            )}
-          </Col>
-        </Row>
-      ))}
-    </div>
+                <Col lg={12}>
+                    <div className="mb-3">
+                        <Label htmlFor="example-text-input" className="form-Label">Button Link</Label>
+                        <Input className="form-control" type="text" defaultValue="https://enmaa-previews.vercel.app/services/service-1" id="example-text-input" />
+                    </div>
+                </Col>
             </Row>
-            <FormUpload name="Banner Image"/>
+            <FormUpload />
             <div className='d-flex justify-content-end gap-3 p-4'>
                 <Link to="/form-elements"className="  d-flex align-items-center gap-1 btn btn-success"><i className="mdi mdi-content-save"></i>SAVE</Link>
                 </div>
@@ -183,4 +133,4 @@ const Section4form = () => {
     );
 }
 
-export default Section4form;
+export default Section10form;

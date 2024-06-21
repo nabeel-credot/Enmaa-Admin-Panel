@@ -15,6 +15,7 @@ import Section6 from "../page/CMS/Home/Section/Section6form";
 import Section7 from "../page/CMS/Home/Section/Section7form";
 import Section8 from "../page/CMS/Home/Section/Section8form";
 import Section9 from "../page/CMS/Home/Section/Section9form";
+import Section10 from "../page/CMS/Home/Section/Section10form";
 
 // Calendar
 import Calendar from "../pages/Calendar/index";
@@ -143,6 +144,7 @@ const userRoutes = [
   { path: "/Section-7", component:  <Section7/>},
   { path: "/Section-8", component:  <Section8/>},
   { path: "/Section-9", component:  <Section9/>},
+  { path: "/Section-10", component:  <Section10/>},
 
   { path: "/our-team", component:  <TeamTable/>},
 

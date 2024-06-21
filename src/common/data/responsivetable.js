@@ -61,6 +61,13 @@ const tabledata = [
         "title": "Comprehensive Real Estate Services",
         "subtitle": "For All Real Estate Inquiries And Consultancy Services, Contact Us",
         "description": "enmaa@enmaa.com\n+88 (9600) 6002\n\nInnovating Excellence in Real Estate Solutions. We strive to be your trusted partner, offering sustainable management solutions, setting new standards, and maximizing profits through innovation.\n\nTrusted Partner in Property Management and Security Services. Sustainable Property Management Solutions Setting New Standards in Real Estate Development and Investments Outstanding Services and Products for Our Clients Profit Maximization through Knowledge, Technology, and Innovation."
+    },
+    {
+        "section": "section 10",
+         "sectionlink": "/section-10",
+        "title": "Comprehensive Real Estate Services",
+        "subtitle": "For All Real Estate Inquiries And Consultancy Services, Contact Us",
+        "description": "enmaa@enmaa.com\n+88 (9600) 6002\n\nInnovating Excellence in Real Estate Solutions. We strive to be your trusted partner, offering sustainable management solutions, setting new standards, and maximizing profits through innovation.\n\nTrusted Partner in Property Management and Security Services. Sustainable Property Management Solutions Setting New Standards in Real Estate Development and Investments Outstanding Services and Products for Our Clients Profit Maximization through Knowledge, Technology, and Innovation."
     }
 ]
 

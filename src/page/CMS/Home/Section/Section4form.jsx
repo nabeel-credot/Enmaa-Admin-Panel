@@ -131,9 +131,9 @@ const Section4form = () => {
                 </Col>
                 <div>
       {inputs.map((input, index) => (
-        <Row key={input.id} className="mb-3">
+        <Row key={input.id} className="mb-0">
           <Col lg={8}>
-            <div className="mb-3">
+            <div className="mb-1">
               <Label htmlFor={`input-${input.id}`} className="form-Label">Points</Label>
               <Input
                 className="form-control"
@@ -144,7 +144,7 @@ const Section4form = () => {
               />
             </div>
           </Col>
-          <Col lg={4} className="d-flex gap-2 align-items-center">
+          <Col lg={4} className="d-flex mt-4 gap-2 align-items-center">
             <Button
               className="d-flex align-items-center gap-2"
               onClick={() => handleRemoveInput(input.id)}
@@ -165,7 +165,8 @@ const Section4form = () => {
       ))}
     </div>
             </Row>
-            <FormUpload name="Banner Image"/>
+            <div className="mt-4">
+            <FormUpload name="Banner Image" /></div>
             <div className='d-flex justify-content-end gap-3 p-4'>
                 <Link to="/form-elements"className="  d-flex align-items-center gap-1 btn btn-success"><i className="mdi mdi-content-save"></i>SAVE</Link>
                 </div>

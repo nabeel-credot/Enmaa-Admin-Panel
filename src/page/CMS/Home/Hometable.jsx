@@ -82,7 +82,7 @@ const Hometable = () => {
                             <Th data-priority="1">Title</Th>
                             {/* <Th data-priority="3">Sub Title</Th> */}
                             <Th data-priority="1">Description </Th>
-                            {/* <Th data-priority="3">Banner</Th> */}
+                            <Th data-priority="3">Status</Th>
                             <Th data-priority="3">Action</Th>
                           </Tr>
                         </Thead>
@@ -95,7 +95,10 @@ const Hometable = () => {
                               <Td>{rowData.title}</Td>
                               {/* <Td>{rowData.subtitle}</Td> */}
                               <Td className="w-30 h-20 overflow-hidden">{rowData.description}</Td>
-                              {/* <Td className=""><img src={logoSvg} alt="" height="24" /></Td> */}
+                              <Td className=""><div className="form-check form-switch">
+  <Input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
+  {/* <Label className="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</Label> */}
+</div></Td>
                               <Td className="d-flex align-items-center justify-content-center  gap-3 "><Link to="https://enmaa-previews.vercel.app/" className=" d-flex align-items-center gap-2 btn btn-outline-light" target="_blank"><i className="mdi mdi-open-in-new"></i>Preview</Link>
                               <Link to={rowData.sectionlink} className=" d-flex align-items-center gap-2  btn btn-outline-light "><i className="mdi  mdi-view-dashboard-edit-outline"></i>Edit</Link></Td>
                            
