@@ -82,7 +82,7 @@ const Hometable = () => {
                             <Th data-priority="1">Title</Th>
                             {/* <Th data-priority="3">Sub Title</Th> */}
                             <Th data-priority="1">Description </Th>
-                            <Th data-priority="3">Status</Th>
+                            <Th data-priority="3">ON/OFF</Th>
                             <Th data-priority="3">Action</Th>
                           </Tr>
                         </Thead>
