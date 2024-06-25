@@ -132,9 +132,9 @@ const Section4form = () => {
                 <div>
       {inputs.map((input, index) => (
         <Row key={input.id} className="mb-0">
-          <Col lg={8}>
-            <div className="mb-1">
-              <Label htmlFor={`input-${input.id}`} className="form-Label">Points</Label>
+          <Row >
+            <Col lg={5}  className="mb-1">
+              <Label htmlFor={`input-${input.id}`} className="form-Label">Points In English</Label>
               <Input
                 className="form-control"
                 type="text"
@@ -142,9 +142,19 @@ const Section4form = () => {
                 id={`input-${input.id}`}
                 onChange={(event) => handleChange(input.id, event)}
               />
-            </div>
-          </Col>
-          <Col lg={4} className="d-flex mt-4 gap-2 align-items-center">
+            </Col>
+            <Col lg={6} className="mb-1">
+              <Label htmlFor={`input-${input.id}`} className="form-Label">Points In Arabic</Label>
+              <Input
+                className="form-control"
+                type="text"
+                 dir="rtl"
+                value={input.value}
+                id={`input-${input.id}`}
+                onChange={(event) => handleChange(input.id, event)}
+              />
+            </Col>
+          <Col lg={1} className="d-flex mt-4 gap-2 align-items-center">
             <Button
               className="d-flex align-items-center gap-2"
               onClick={() => handleRemoveInput(input.id)}
@@ -153,14 +163,15 @@ const Section4form = () => {
               -
             </Button>
             {index === inputs.length - 1 && (
-              <Button
+                <Button
                 className="d-flex align-items-center gap-2"
                 onClick={handleAddInput}
-              >
+                >
                +
               </Button>
             )}
           </Col>
+            </Row>
         </Row>
       ))}
     </div>

@@ -17,7 +17,20 @@ import Section8 from "../page/CMS/Home/Section/Section8form";
 import Section9 from "../page/CMS/Home/Section/Section9form";
 import Section10 from "../page/CMS/Home/Section/Section10form";
 
+
+import Abouttable from "../page/CMS/About/Abouttable";
+import SectionA1 from "../page/CMS/About/Section/Section1form";
+import SectionA2 from "../page/CMS/About/Section/Section2form";
+import SectionA3 from "../page/CMS/About/Section/Section3form";
+import SectionA4 from "../page/CMS/About/Section/Section4form";
 // Calendar
+
+
+import  Governmenttable from "../page/CMS/Government-bot/Governmenttable";
+import Corporatetable from "../page/CMS/Corporate/Corporatetable";
+import Disclosuretable from "../page/CMS/Disclosure/Disclosuretable";
+// import Servicetable from "../page/CMS/Service/Servicetable";
+
 import Calendar from "../pages/Calendar/index";
 
 //Chat
@@ -146,7 +159,11 @@ const userRoutes = [
   { path: "/Section-9", component:  <Section9/>},
   { path: "/Section-10", component:  <Section10/>},
 
-  { path: "/our-team", component:  <TeamTable/>},
+  { path: "/about", component:  <Abouttable/>},
+  // { path: "/service", component:  <Servicetable/>},
+  { path: "/government-bot", component:  <Governmenttable/>},
+  { path: "/corporate", component:  <Corporatetable/>},
+  { path: "/disclosure", component:  <Disclosuretable/>},
 
 
   //profile

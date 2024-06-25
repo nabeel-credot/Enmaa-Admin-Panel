@@ -186,22 +186,22 @@ const SidebarContent = props => {
                   <Link to="/home">{props.t("Home Page")}</Link>
                 </li>
                 <li>
-                  <Link to="/#our-team">{props.t("About")}</Link>
+                  <Link to="/about">{props.t("About")}</Link>
                 </li>
                 <li>
-                  <Link to="/#our-team">{props.t("Government Bots")}</Link>
+                  <Link to="/government-bot">{props.t("Government Bots")}</Link>
                 </li>
                 <li>
-                  <Link to="/#our-team">{props.t("Services")}</Link>
+                  <Link to="/service">{props.t("Services")}</Link>
                 </li>
                 <li>
-                  <Link to="/#our-team">{props.t("Corporate Governance")}</Link>
+                  <Link to="/corporate">{props.t("Corporate Governance")}</Link>
                 </li>
                 <li>
                   <Link to="/annual-report">{props.t("Annual Report")}</Link>
                 </li>
                 <li>
-                  <Link to="/disclosures">{props.t("Disclosures")}</Link>
+                  <Link to="/disclosure">{props.t("Disclosures")}</Link>
                 </li>
                 <li>
                   <Link to="/finanical-statement">{props.t("Finanical Statement")}</Link>

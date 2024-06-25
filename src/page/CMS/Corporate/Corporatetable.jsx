@@ -5,12 +5,13 @@ import { Row, Col, Card, CardBody, CardHeader ,Input, Label} from "reactstrap"
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table"
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css"
 //Import Breadcrumb
-import Breadcrumbs from "./../../../components/Common/Breadcrumb"
-import { tabledata } from "./../../../common/data"
+import Breadcrumbs from "../../../components/Common/Breadcrumb.js"
+import { tabledata } from "../../../common/data/index.js"
 import logoSvg from './../../../assets/images/logo-sm.png';
 import { Link } from "react-router-dom"
-import Pagination from './../../../components/Common/Pagination.js';
-const Abouttable = () => {
+import Pagination from '../../../components/Common/Pagination.js';
+const Corporatetable
+ = () => {
   //meta title
   document.title = "Responsive Table | enmaa.com";
 
@@ -18,7 +19,7 @@ const Abouttable = () => {
     <React.Fragment>
       <div className="page-content">
         <div className="container-fluid">
-          <Breadcrumbs title="Tables" breadcrumbItem="About page" />
+          <Breadcrumbs title="Tables" breadcrumbItem="Corporate page" />
           <Row>
             <h4>Meta Section</h4>
             <Col lg={6}>
@@ -125,4 +126,5 @@ const Abouttable = () => {
   )
 }
 
-export default Abouttable
+export default Corporatetable
+
