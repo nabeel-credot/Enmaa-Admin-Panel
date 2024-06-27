@@ -6,7 +6,7 @@ import { Card, CardBody, Col, Container, Dropdown, DropdownItem, DropdownMenu, D
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 
 //Import blog grid data
-import {blogGridData} from "../../common/data/blog"
+import {blogGridData} from "../../common/data/about"
 
 //Import Icons
 import FeatherIcon from "feather-icons-react";

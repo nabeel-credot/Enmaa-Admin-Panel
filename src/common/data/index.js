@@ -3,14 +3,7 @@ import { cryptoOrders, wallet } from "./crypto"
 import { invoiceList } from "./invoices"
 import { projects } from "./projects"
 import { tasks } from "./tasks"
-import {
-  inboxmails,
-  starredmails,
-  importantmails,
-  draftmails,
-  sentmails,
-  trashmails,
-} from "./mails"
+
 import { chats, contacts, groups, messages } from "./chat"
 import { calenderDefaultCategories, events } from "./calender"
 import { users, userProfile } from "./contacts"
@@ -28,6 +21,10 @@ import {
 } from "./dashboard-saas"
 
 import { tabledata } from "./responsivetable"
+import { abouttabledata } from "./Abouttable"
+import { aboutsubtabledata } from "./aboutsubtable"
+import { governmenttabledata } from "./governmenttable"
+
 
 import {
   MarketOver1YData, MarketOver6MData, MarketOver1MData, MarketOverViewAllData, PieChartAllData, PieChart1MData,
@@ -42,12 +39,7 @@ export {
   contacts,
   messages,
   wallet,
-  inboxmails,
-  importantmails,
-  draftmails,
-  sentmails,
-  trashmails,
-  starredmails,
+
   cryptoOrders,
   invoiceList,
   projects,
@@ -77,5 +69,8 @@ export {
   InvestedOverviewFeb,
   InvestedOverviewJan,
   InvestedOverviewDec,
-  tabledata
+  tabledata,
+  abouttabledata,
+  aboutsubtabledata,
+  governmenttabledata
 }

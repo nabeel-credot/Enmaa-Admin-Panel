@@ -16,6 +16,7 @@ import Section7 from "../page/CMS/Home/Section/Section7form";
 import Section8 from "../page/CMS/Home/Section/Section8form";
 import Section9 from "../page/CMS/Home/Section/Section9form";
 import Section10 from "../page/CMS/Home/Section/Section10form";
+import Section11 from "../page/CMS/Home/Section/Section11form";
 
 
 import Abouttable from "../page/CMS/About/Abouttable";
@@ -23,13 +24,53 @@ import SectionA1 from "../page/CMS/About/Section/Section1form";
 import SectionA2 from "../page/CMS/About/Section/Section2form";
 import SectionA3 from "../page/CMS/About/Section/Section3form";
 import SectionA4 from "../page/CMS/About/Section/Section4form";
-// Calendar
+import SectionA5 from "../page/CMS/About/Section/Section5form";
+import SectionA6 from "../page/CMS/About/Section/Section6form";
+import Aboutsubtable from "../page/CMS/About-sub/Aboutsubtable";
+import SectionAS1 from "../page/CMS/About-sub/Section/Section1form";
+import SectionAS2 from "../page/CMS/About-sub/Section/Section2form";
+import SectionAS3 from "../page/CMS/About-sub/Section/Section3form";
+import SectionAS4 from "../page/CMS/About-sub/Section/Section4form";
+import SectionAS5 from "../page/CMS/About-sub/Section/Section5form";
 
+// Government
 
 import  Governmenttable from "../page/CMS/Government-bot/Governmenttable";
+import SectionG1 from "../page/CMS/Government-bot/Section/Section1form";
+import SectionG2 from "../page/CMS/Government-bot/Section/Section2form";
+import SectionG3 from "../page/CMS/Government-bot/Section/Section3form";
+import SectionG4 from "../page/CMS/Government-bot/Section/Section4form";
+import SectionG5 from "../page/CMS/Government-bot/Section/Section5form";
+
+// Corporate
+
 import Corporatetable from "../page/CMS/Corporate/Corporatetable";
+import SectionC1 from "../page/CMS/Corporate/Section/Section1form";
+import SectionC2 from "../page/CMS/Corporate/Section/Section2form";
+import SectionC3 from "../page/CMS/Corporate/Section/Section3form";
+import SectionC4 from "../page/CMS/Corporate/Section/Section4form";
+
+// Disclosure
+
 import Disclosuretable from "../page/CMS/Disclosure/Disclosuretable";
-// import Servicetable from "../page/CMS/Service/Servicetable";
+import SectionD1 from "../page/CMS/Disclosure/Section/Section1form";
+import SectionD2 from "../page/CMS/Disclosure/Section/Section2form";
+import SectionD3 from "../page/CMS/Disclosure/Section/Section3form";
+import SectionD4 from "../page/CMS/Disclosure/Section/Section4form";
+
+// Service
+import Servicetable from "../page/CMS/Service/Servicetable";
+import SectionS1 from "../page/CMS/Service/section/Section1form.jsx";
+import SectionS2 from "../page/CMS/Service/section/Section2form.jsx";
+import SectionS3 from "../page/CMS/Service/section/Section3form.jsx";
+import SectionS4 from "../page/CMS/Service/section/Section4form.jsx";
+
+// Annual-report
+import Annualreportable from "../page/CMS/Annual-report/Annual-reporttable.jsx";
+import SectionAR1 from "../page/CMS/Annual-report/Section/Section1form";
+import SectionAR2 from "../page/CMS/Annual-report/Section/Section2form";
+import SectionAR3 from "../page/CMS/Annual-report/Section/Section3form";
+import SectionAR4 from "../page/CMS/Annual-report/Section/Section4form";
 
 import Calendar from "../pages/Calendar/index";
 
@@ -146,24 +187,73 @@ const userRoutes = [
   //dashboard
   { path: "/dashboard", component: <Dashboard/> },
   { path: "/home", component:  <Hometable/>},
-  { path: "/Section-1", component:  <Section1/>},
-  { path: "/Section-2", component:  <Section2/>},
-  { path: "/Section-3", component:  <Section3/>},
-  { path: "/Section-4", component:  <Section4/>},
-  { path: "/Section-5", component:  <Section5/>},
+  { path: "/home/Section-1", component:  <Section1/>},
+  { path: "/home/Section-2", component:  <Section2/>},
+  { path: "/home/Section-3", component:  <Section3/>},
+  { path: "/home/Section-4", component:  <Section4/>},
+  { path: "/home/Section-5", component:  <Section5/>},
 
 
-  { path: "/Section-6", component:  <Section6/>},
-  { path: "/Section-7", component:  <Section7/>},
-  { path: "/Section-8", component:  <Section8/>},
-  { path: "/Section-9", component:  <Section9/>},
-  { path: "/Section-10", component:  <Section10/>},
+  { path: "/home/Section-6", component:  <Section6/>},
+  { path: "/home/Section-7", component:  <Section7/>},
+  { path: "/home/Section-8", component:  <Section8/>},
+  { path: "/home/Section-9", component:  <Section9/>},
+  { path: "/home/Section-10", component:  <Section10/>},
+  { path: "/home/Section-11", component:  <Section11/>},
 
+  //about
   { path: "/about", component:  <Abouttable/>},
-  // { path: "/service", component:  <Servicetable/>},
+  { path: "/about/Section-1", component:  <SectionA1/>},
+  { path: "/about/Section-2", component:  <SectionA2/>},
+  { path: "/about/Section-3", component:  <SectionA3/>},
+  { path: "/about/Section-4", component:  <SectionA4/>},
+  { path: "/about/Section-5", component:  <SectionA5/>},
+  { path: "/about/Section-6", component:  <SectionA6/>},
+  //about-sub
+  { path: "/about-sub", component:  <Aboutsubtable/>},
+  { path: "/about-sub/Section-1", component:  <SectionAS1/>},
+  { path: "/about-sub/Section-2", component:  <SectionAS2/>},
+  { path: "/about-sub/Section-3", component:  <SectionAS3/>},
+  { path: "/about-sub/Section-4", component:  <SectionAS4/>},
+  { path: "/about-sub/Section-5", component:  <SectionAS5/>},
+
+  //government-bot
   { path: "/government-bot", component:  <Governmenttable/>},
+  { path: "/government-bot/Section-1", component:  <SectionG1/>},
+  { path: "/government-bot/Section-2", component:  <SectionG2/>},
+  { path: "/government-bot/Section-3", component:  <SectionG3/>},
+  { path: "/government-bot/Section-4", component:  <SectionG4/>},
+  { path: "/government-bot/Section-5", component:  <SectionG5/>},
+
+  // { path: "/government-bot/Section-5", component:  <SectionG5/>},
+
+  //service
+  { path: "/service", component:  <Servicetable/>},
+  { path: "/service/Section-1", component:  <SectionS1/>},
+  { path: "/service/Section-2", component:  <SectionS2/>},
+  { path: "/service/Section-3", component:  <SectionS3/>},
+  { path: "/service/Section-4", component:  <SectionS4/>},
+  // { path: "/service/Section-5", component:  <SectionS5/>},
   { path: "/corporate", component:  <Corporatetable/>},
+  { path: "/corporate/Section-1", component:  <SectionC1/>},
+  { path: "/corporate/Section-2", component:  <SectionC2/>},
+  { path: "/corporate/Section-3", component:  <SectionC3/>},
+  { path: "/corporate/Section-4", component:  <SectionC4/>},
+  // { path: "/corporate/Section-5", component:  <SectionC5/>},
+  //disclosure
   { path: "/disclosure", component:  <Disclosuretable/>},
+  { path: "/disclosure/Section-1", component:  <SectionD1/>},
+  { path: "/disclosure/Section-2", component:  <SectionD2/>},
+  { path: "/disclosure/Section-3", component:  <SectionD3/>},
+  { path: "/disclosure/Section-4", component:  <SectionD4/>},
+  // { path: "/disclosure/Section-5", component:  <SectionD5/>},
+  // annual-report
+  { path: "/annual-report", component: <Annualreportable/> },
+  { path: "/annual-report/Section-1", component:  <SectionAR1/>},
+  { path: "/annual-report/Section-2", component:  <SectionAR2/>},
+  { path: "/annual-report/Section-3", component:  <SectionAR3/>},
+  { path: "/annual-report/Section-4", component:  <SectionAR4/>},
+  // { path: "/annual-report/Section-5", component:  <SectionAR5/>},
 
 
   //profile
@@ -174,7 +264,6 @@ const userRoutes = [
 
 
   //CMS
-  { path: "/#annual-report", component: <Chat/> },
   //Chat
   { path: "/apps-chat", component: <Chat/> },
 

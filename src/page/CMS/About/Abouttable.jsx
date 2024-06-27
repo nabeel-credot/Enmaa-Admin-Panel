@@ -6,7 +6,7 @@ import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table"
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css"
 //Import Breadcrumb
 import Breadcrumbs from "./../../../components/Common/Breadcrumb"
-import { tabledata } from "./../../../common/data"
+import { abouttabledata } from "./../../../common/data"
 import logoSvg from './../../../assets/images/logo-sm.png';
 import { Link } from "react-router-dom"
 import Pagination from './../../../components/Common/Pagination.js';
@@ -87,7 +87,7 @@ const Abouttable = () => {
                           </Tr>
                         </Thead>
                         <Tbody>
-                          {tabledata.map((rowData, index) => (
+                          {abouttabledata.map((rowData, index) => (
                             <Tr key={index}>
                               <Th>
                                  {rowData.section}

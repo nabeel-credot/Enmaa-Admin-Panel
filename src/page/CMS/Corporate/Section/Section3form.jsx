@@ -5,7 +5,7 @@ import FormUpload from './../../../../pages/Forms/FormUpload.js';
 import { Link } from "react-router-dom";
 import Breadcrumbs from './../../../../components/Common/Breadcrumb.js';
 
-const Section8form = () => {
+const Section3form = () => {
     return (
         <React.Fragment>
             <div className="page-content">
@@ -13,10 +13,10 @@ const Section8form = () => {
                     {/* Render Breadcrumbs */}
                     <div className='d-flex justify-content-between'>
                         <div className=''>
-                            <Link to="/home" className='icon-demo-content mb-4'>
+                            <Link to="/corporate" className='icon-demo-content mb-4'>
                                 <i className='fas fa-arrow-left'></i>
                             </Link>
-                            <Breadcrumbs title="Forms" breadcrumbItem="Section 8" />
+                            <Breadcrumbs title="Forms" breadcrumbItem="Section 3" />
                         </div>
                         <div className='d-flex flex-end gap-3 p-4'>
                             <button className="d-flex align-items-center gap-2 btn btn-outline-light">
@@ -31,49 +31,49 @@ const Section8form = () => {
                         <Col xs={12}>
                             <Card>
                                 <CardHeader>
-                                    <h4 className="card-title">Contact Information Section</h4>
-                                    <p className="card-title-desc">Here you can change the each <code>HEADING, CONTACT INFO & IMAGE</code></p>
+                                    <h4 className="card-title">Trusted Solutions Section</h4>
+                                    <p className="card-title-desc">Here you can change the each <code>HEADING, DESCRIPTION, STATS, & IMAGE</code></p>
                                 </CardHeader>
                                 <CardBody className="p-4">
                                     <Row>
                                         <Col lg={6}>
                                             <div className="mb-3">
+                                                <Label htmlFor="stats-english" className="form-Label">Stats in English</Label>
+                                                <Input className="form-control" type="text" defaultValue="50+ Diverse Properties" id="stats-english" />
+                                            </div>
+                                        </Col>
+                                        <Col lg={6}>
+                                            <div className="mb-3">
+                                                <Label htmlFor="stats-arabic" className="form-Label">Stats in Arabic</Label>
+                                                <Input dir="rtl" className="form-control" type="text" defaultValue="50+ ممتلكات متنوعة" id="stats-arabic" />
+                                            </div>
+                                        </Col>
+                                        <Col lg={6}>
+                                            <div className="mb-3">
                                                 <Label htmlFor="heading-english" className="form-Label">Heading in English</Label>
-                                                <Input className="form-control" type="text" defaultValue="For All Real Estate Inquiries And Consultancy Services," id="heading-english" />
+                                                <Input className="form-control" type="text" defaultValue="Trusted Solutions" id="heading-english" />
                                             </div>
                                         </Col>
                                         <Col lg={6}>
                                             <div className="mb-3">
                                                 <Label htmlFor="heading-arabic" className="form-Label">Heading in Arabic</Label>
-                                                <Input dir="rtl" className="form-control" type="text" defaultValue="لجميع الاستفسارات العقارية وخدمات الاستشارات" id="heading-arabic" />
+                                                <Input dir="rtl" className="form-control" type="text" defaultValue="حلول موثوقة" id="heading-arabic" />
                                             </div>
                                         </Col>
-                                        <Col lg={6}>
+                                        <Col lg={12}>
                                             <div className="mb-3">
-                                                <Label htmlFor="contact-title-english" className="form-Label">Contact Title in English</Label>
-                                                <Input className="form-control" type="text" defaultValue="Contact Us" id="contact-title-english" />
+                                                <Label htmlFor="description-english" className="form-Label">Description in English</Label>
+                                                <Input className="form-control" type="textarea" defaultValue="Your trusted source for premier real estate and security services, ensuring satisfaction and achieving the highest industry standards." id="description-english" />
                                             </div>
                                         </Col>
-                                        <Col lg={6}>
+                                        <Col lg={12}>
                                             <div className="mb-3">
-                                                <Label htmlFor="contact-title-arabic" className="form-Label">Contact Title in Arabic</Label>
-                                                <Input dir="rtl" className="form-control" type="text" defaultValue="اتصل بنا" id="contact-title-arabic" />
-                                            </div>
-                                        </Col>
-                                        <Col lg={6}>
-                                            <div className="mb-3">
-                                                <Label htmlFor="email" className="form-Label">Email</Label>
-                                                <Input className="form-control" type="email" defaultValue="enmaa@enmaa.com" id="email" />
-                                            </div>
-                                        </Col>
-                                        <Col lg={6}>
-                                            <div className="mb-3">
-                                                <Label htmlFor="phone" className="form-Label">Phone</Label>
-                                                <Input className="form-control" type="text" defaultValue="+88 (9600) 6002" id="phone" />
+                                                <Label htmlFor="description-arabic" className="form-Label">Description in Arabic</Label>
+                                                <Input dir="rtl" className="form-control" type="textarea" defaultValue="مصدر موثوق به للعقارات والخدمات الأمنية الممتازة، وضمان الرضا وتحقيق أعلى معايير الصناعة." id="description-arabic" />
                                             </div>
                                         </Col>
                                     </Row>
-                                    <FormUpload name="Background Image" />
+                                    <FormUpload name="Section Image" />
                                     <div className='d-flex justify-content-end gap-3 p-4'>
                                         <Link to="/form-elements" className="d-flex align-items-center gap-1 btn btn-success">
                                             <i className="mdi mdi-content-save"></i>SAVE
@@ -89,4 +89,4 @@ const Section8form = () => {
     );
 }
 
-export default Section8form;
+export default Section3form;

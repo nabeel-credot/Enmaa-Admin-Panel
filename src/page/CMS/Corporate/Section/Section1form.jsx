@@ -12,7 +12,7 @@ const Section1form = () => {
                     {/* Render Breadcrumbs */}
                     <div className="d-flex justify-content-between">
                         <div>
-                            <Link to="/about" className="icon-demo-content mb-4">
+                            <Link to="/corporate" className="icon-demo-content mb-4">
                                 <i className="fas fa-arrow-left"></i>
                             </Link>
                             <Breadcrumbs title="Forms" breadcrumbItem="Section 1" />

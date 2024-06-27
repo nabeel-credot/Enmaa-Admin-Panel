@@ -10,8 +10,7 @@ import { aboutsubtabledata } from "../../../common/data/index.js"
 import logoSvg from './../../../assets/images/logo-sm.png';
 import { Link } from "react-router-dom"
 import Pagination from '../../../components/Common/Pagination.js';
-const Corporatetable
- = () => {
+const Governmenttable = () => {
   //meta title
   document.title = "Responsive Table | enmaa.com";
 
@@ -19,7 +18,7 @@ const Corporatetable
     <React.Fragment>
       <div className="page-content">
         <div className="container-fluid">
-          <Breadcrumbs title="Tables" breadcrumbItem="Corporate page" />
+          <Breadcrumbs title="Tables" breadcrumbItem=" Service page" />
           <Row>
             <h4>Meta Section</h4>
             <Col lg={6}>
@@ -126,5 +125,4 @@ const Corporatetable
   )
 }
 
-export default Corporatetable
-
+export default Governmenttable

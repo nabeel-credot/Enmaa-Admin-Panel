@@ -17,7 +17,7 @@ const Abouttable = () => {
     <React.Fragment>
       <div className="page-content">
         <div className="container-fluid">
-          <Breadcrumbs title="Tables" breadcrumbItem="About page" />
+          <Breadcrumbs title="Tables" breadcrumbItem="Annual Report page" />
           <Row>
             <h4>Meta Section</h4>
             <Col lg={6}>

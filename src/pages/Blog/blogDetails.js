@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 
 //Import Bloglist Data
-import { InstagramPost, UpcomingPost, PopularPost, tagCloud } from "../../common/data/blog"
+import { InstagramPost, UpcomingPost, PopularPost, tagCloud } from "../../common/data/about"
 
 import image2 from "../../assets/images/small/img-2.jpg"
 

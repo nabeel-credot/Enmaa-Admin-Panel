@@ -3,8 +3,9 @@ import { Col, Input, Label, Row } from 'reactstrap';
 import { Card, CardBody, CardHeader, Container, Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import Breadcrumbs from './../../../../components/Common/Breadcrumb';
+import FormUpload from './../../../../pages/Forms/FormUpload.js';
 
-const Section1form = () => {
+const Section4form = () => {
     return (
         <React.Fragment>
             <div className="page-content">
@@ -12,10 +13,10 @@ const Section1form = () => {
                     {/* Render Breadcrumbs */}
                     <div className="d-flex justify-content-between">
                         <div>
-                            <Link to="/about" className="icon-demo-content mb-4">
+                            <Link to="/corporate" className="icon-demo-content mb-4">
                                 <i className="fas fa-arrow-left"></i>
                             </Link>
-                            <Breadcrumbs title="Forms" breadcrumbItem="Section 1" />
+                            <Breadcrumbs title="Forms" breadcrumbItem="Section 4" />
                         </div>
                         <div className="d-flex flex-end gap-3 p-4">
                             <Link to="/form-elements" className="d-flex align-items-center gap-2 btn btn-outline-light">
@@ -30,34 +31,55 @@ const Section1form = () => {
                         <Col xs={12}>
                             <Card>
                                 <CardHeader>
-                                    <h4 className="card-title">About Company Section</h4>
-                                    <p className="card-title-desc">Here you can change the <code>TITLE & DESCRIPTION</code> for both languages.</p>
+                                    <h4 className="card-title">Contact Section</h4>
+                                    <p className="card-title-desc">Here you can change the <code>TITLE, BUTTON TEXT, BUTTON LINK, CONTACT NUMBER</code> for both languages.</p>
                                 </CardHeader>
                                 <CardBody className="p-4">
                                     <Row>
                                         <Col lg={6}>
                                             <div className="mb-3">
                                                 <Label htmlFor="title-english" className="form-label">Title in English</Label>
-                                                <Input className="form-control" type="text" defaultValue="About Company" id="title-english" />
+                                                <Input className="form-control" type="text" defaultValue="Offering The Best Experience Of Real Estate Services" id="title-english" />
                                             </div>
                                         </Col>
                                         <Col lg={6}>
                                             <div className="mb-3">
                                                 <Label htmlFor="title-arabic" className="form-label">Title in Arabic</Label>
-                                                <Input dir="rtl" className="form-control" type="text" defaultValue="عن الشركة" id="title-arabic" />
+                                                <Input dir="rtl" className="form-control" type="text" defaultValue="تقديم أفضل تجربة لخدمات العقارات" id="title-arabic" />
                                             </div>
                                         </Col>
                                         <Col lg={6}>
                                             <div className="mb-3">
-                                                <Label htmlFor="description-english" className="form-label">Description in English</Label>
-                                                <Input className="form-control" type="textarea" defaultValue="Lorem ipsum dolor sit amet consectetur. Mus et rhoncus pretium euismod pellentesque. Consectetur lacus enim eleifend vitae nibh sem.lacus enim eleifend vitae nibh sem it amet consectetur." id="description-english" />
+                                                <Label htmlFor="button-text-english" className="form-label">Button Text in English</Label>
+                                                <Input className="form-control" type="text" defaultValue="CONTACT WITH US" id="button-text-english" />
                                             </div>
                                         </Col>
                                         <Col lg={6}>
                                             <div className="mb-3">
-                                                <Label htmlFor="description-arabic" className="form-label">Description in Arabic</Label>
-                                                <Input dir="rtl" className="form-control" type="textarea" defaultValue="لوريم إيبسوم دولار سيت أميت. موس إت رونكوس بريتيوم يوسمود بيللينتسكو. كونسيتتور لاكوس إينيم إيليفيإند فيتاي نيب سيم.لاكوس إينيم إيليفيإند فيتاي نيب سيم إت أميت كونسيتتور." id="description-arabic" />
+                                                <Label htmlFor="button-text-arabic" className="form-label">Button Text in Arabic</Label>
+                                                <Input dir="rtl" className="form-control" type="text" defaultValue="تواصل معنا" id="button-text-arabic" />
                                             </div>
+                                        </Col>
+                                        <Col lg={12}>
+                                            <div className="mb-3">
+                                                <Label htmlFor="button-link" className="form-label">Button Link</Label>
+                                                <Input className="form-control" type="text" defaultValue="https://enmaa-previews.vercel.app/contact" id="button-link" />
+                                            </div>
+                                        </Col>
+                                        <Col lg={6}>
+                                            <div className="mb-3">
+                                                <Label htmlFor="contact-number-english" className="form-label">Contact Number in English</Label>
+                                                <Input className="form-control" type="text" defaultValue="+88 (9600) 6002" id="contact-number-english" />
+                                            </div>
+                                        </Col>
+                                        {/* <Col lg={6}>
+                                            <div className="mb-3">
+                                                <Label htmlFor="contact-number-arabic" className="form-label">Contact Number in Arabic</Label>
+                                                <Input dir="rtl" className="form-control" type="text" defaultValue="+88 (9600) 6002" id="contact-number-arabic" />
+                                            </div>
+                                        </Col> */}
+                                        <Col lg={12}>
+                                            <FormUpload name="Background Image" />
                                         </Col>
                                     </Row>
                                     <div className="d-flex justify-content-end gap-3 p-4">
@@ -75,4 +97,4 @@ const Section1form = () => {
     );
 }
 
-export default Section1form;
+export default Section4form;
