@@ -6,7 +6,8 @@ const aboutsubtabledata = [
       description: "Lorem ipsum dolor sit amet consectetur. Mus et rhoncus pretium euismod pellentesque. Consectetur lacus enim eleifend vitae nibh sem.lacus enim eleifend vitae nibh sem it amet consectetur.",
       extra: "",
       on_off: true,
-      sectionlink: "section-1"
+      sectionlink: "section-1",
+      type:"sub-service"
     },
     {
       section: 2,
@@ -15,7 +16,8 @@ const aboutsubtabledata = [
       description: "",
       extra: "",
       on_off: true,
-      sectionlink: "section-2"
+      sectionlink: "section-2",
+      type:"sub-service"
     },
     {
       section: 3,
@@ -24,7 +26,8 @@ const aboutsubtabledata = [
       description: "Al Enma’a Real Estate Company K.S.C.P was registered and incorporated in State of Kuwait in 1993. The company shares are listed on Boursa Kuwait and all the activities of the company are conducted in accordance with Islamic Sharia. The parent company is subsidiary of Kuwait Finance House K.S.C.P a registered Islamic bank in Kuwait whose shares are listed on Boursa Kuwait. Al Enmaa Real Estate Company is engaged in real estate activities inside and outside Kuwait. In the field of the real estate, the Company manages, markets, leases and maintains all types of real estate whether owned by the company or managed for other through its qualified personnel.",
       extra: "CONTACT WITH US → +88 (9600) 6002",
       on_off: true,
-      sectionlink: "section-3"
+      sectionlink: "section-3",
+      type:"service"
     },
     {
       section: 4,
@@ -33,7 +36,8 @@ const aboutsubtabledata = [
       description: "",
       extra: "",
       on_off: true,
-      sectionlink: "section-4"
+      sectionlink: "section-4",
+      type:"service"
     },
     {
       section: 5,
@@ -42,7 +46,8 @@ const aboutsubtabledata = [
       description: "Lorem ipsum dolor sit amet consectetur. Mus et rhoncus pretium euismod pellentesque. Consectetur lacus enim eleifend vitae nibh sem.lacus enim eleifend vitae nibh sem it amet consectetur.",
       extra: "",
       on_off: true,
-      sectionlink: "section-5"
+      sectionlink: "section-5",
+      type:"service"
     }
   ];
   

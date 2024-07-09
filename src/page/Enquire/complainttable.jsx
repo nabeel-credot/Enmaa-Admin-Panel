@@ -6,8 +6,8 @@ import Breadcrumbs from "../../components/Common/Breadcrumb";
 import { janTopSellingData } from "../../common/data";
 import logoSvg from "../../assets/images/logo-sm.png";
 import { Link } from "react-router-dom";
-
-const Propertytable = () => {
+const complainttable = () => {
+  //meta title
   // Meta title
   document.title = "Responsive Table | enmaa.com";
 
@@ -30,7 +30,7 @@ const Propertytable = () => {
     <React.Fragment>
       <div className="page-content">
         <div className="container-fluid">
-          <Breadcrumbs title="Tables" breadcrumbItem="Enquire " />
+          <Breadcrumbs title="Tables" breadcrumbItem="Complaint Enquire " />
 
           <Row>
             <Col>
@@ -46,9 +46,9 @@ const Propertytable = () => {
                         <Thead>
                           <Tr>
                             <Th data-priority="1">Enquire ID</Th>
-                            <Th data-priority="1">Property ID</Th>
-                            <Th data-priority="1">Description</Th>
-                            <Th data-priority="3">Image</Th>
+                            <Th data-priority="1">Name</Th>
+                            <Th data-priority="1">Position</Th>
+                            <Th data-priority="3">CV</Th>
                             <Th data-priority="3"></Th>
                           </Tr>
                         </Thead>
@@ -109,4 +109,4 @@ const Propertytable = () => {
   );
 };
 
-export default Propertytable;
+export default complainttable

@@ -3,6 +3,7 @@ import { Col, Input, Label, Row } from 'reactstrap';
 import { Card, CardBody, CardHeader, Container, Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import Breadcrumbs from './../../../../components/Common/Breadcrumb';
+import FormUpload from './../../../../pages/Forms/FormUpload.js';
 
 const Section3form = () => {
   return (
@@ -87,6 +88,9 @@ const Section3form = () => {
                         <Label htmlFor="example-text-input" className="form-Label">Button Link</Label>
                         <Input className="form-control" type="text" defaultValue="https://enmaa-previews.vercel.app/services/service-1" id="example-text-input" />
                     </div>
+                </Col>
+                    <Col lg={12}>
+              <FormUpload name="Icon Image"/>
                 </Col>
                   </Row>
                   <div className="d-flex justify-content-end gap-3 p-4">

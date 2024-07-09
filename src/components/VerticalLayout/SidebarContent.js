@@ -167,10 +167,21 @@ const SidebarContent = props => {
               </Link>
               <ul className="sub-menu">
                 <li>
-                  <Link to="/enquire-property">{props.t("Property Enquiries")}</Link>
+                  <Link to="/propertytable">{props.t("Property Enquiries")}</Link>
                 </li>
                 <li>
-                  <Link to="/enquire-property">{props.t("Investor  Enquiries")}</Link>
+                  <Link to="/Investortable">{props.t("Investor  Enquiries")}</Link>
+                </li>
+                <li>
+                  <Link to="/contacttable">{props.t("Contact Enquiries ")}</Link>
+                </li>
+                <li>
+                  <Link to="/complainttable">{props.t("Complaint Enquiries ")}</Link>
+                </li>
+                <li>
+                  <Link to="/careertable">
+                    {props.t("Career Enquiries")}
+                  </Link>
                 </li>
               </ul>
             </li>
@@ -327,28 +338,7 @@ const SidebarContent = props => {
                 <span>{props.t("Messages ")}</span>
               </Link>
             </li> */}
-            <li>
-              <Link to="/#" className="has-arrow">
-                <FeatherIcon
-                  icon="grid"
-                />{" "}
-                <span>{props.t("Contacts")}</span>
-              </Link>
-              <ul className="sub-menu">
-                <li>
-                  <Link to="/contact">{props.t("Contact ")}</Link>
-                </li>
-                <li>
-                  <Link to="/complaint">{props.t("Complaint ")}</Link>
-                </li>
-                <li>
-                  <Link to="/career">
-                    {props.t("Career")}
-                  </Link>
-                </li>
-                
-              </ul>
-            </li>
+            
             <li>
               <Link to="/#user" className="">
                 <FeatherIcon

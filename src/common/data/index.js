@@ -72,5 +72,5 @@ export {
   tabledata,
   abouttabledata,
   aboutsubtabledata,
-  governmenttabledata
+  governmenttabledata,
 }

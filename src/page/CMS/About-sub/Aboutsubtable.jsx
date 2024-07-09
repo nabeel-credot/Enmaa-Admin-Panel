@@ -5,6 +5,7 @@ import { Row, Col, Card, CardBody, CardHeader ,Input, Label} from "reactstrap"
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table"
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css"
 //Import Breadcrumb
+import Employeetable from './Employeetable.jsx';
 import Breadcrumbs from "../../../components/Common/Breadcrumb.js"
 import { aboutsubtabledata } from "../../../common/data/index.js"
 import logoSvg from './../../../assets/images/logo-sm.png';
@@ -113,6 +114,7 @@ const Abouttable = () => {
                           currentData={tabledata}
                           className="d-flex align-items-center justify-content-between text-center text-sm-start mb-3" /> */}
                       </Table>
+                      <Employeetable/>  
                     </div>
                   </div>
                 </CardBody>

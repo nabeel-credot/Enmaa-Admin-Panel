@@ -7,7 +7,7 @@ import { janTopSellingData } from "../../common/data";
 import logoSvg from "../../assets/images/logo-sm.png";
 import { Link } from "react-router-dom";
 
-const Propertytable = () => {
+const Careeertable = () => {
   // Meta title
   document.title = "Responsive Table | enmaa.com";
 
@@ -17,8 +17,17 @@ const Propertytable = () => {
   // State to store selected row data
   const [selectedRow, setSelectedRow] = useState(null);
 
+  // State to manage image modal visibility
+  const [imageModal, setImageModal] = useState(false);
+
+  // State to store selected image
+  const [selectedImage, setSelectedImage] = useState(null);
+
   // Function to toggle modal visibility
   const toggle = () => setModal(!modal);
+
+  // Function to toggle image modal visibility
+  const toggleImageModal = () => setImageModal(!imageModal);
 
   // Function to handle view button click
   const handleViewClick = (rowData) => {
@@ -26,11 +35,17 @@ const Propertytable = () => {
     toggle();
   };
 
+  // Function to handle image click
+  const handleImageClick = (image) => {
+    setSelectedImage(image);
+    toggleImageModal();
+  };
+
   return (
     <React.Fragment>
       <div className="page-content">
         <div className="container-fluid">
-          <Breadcrumbs title="Tables" breadcrumbItem="Enquire " />
+          <Breadcrumbs title="Tables" breadcrumbItem="Career Enquire " />
 
           <Row>
             <Col>
@@ -59,7 +74,13 @@ const Propertytable = () => {
                               <Td>{rowData.enquire}</Td>
                               <Td>{rowData.name}</Td>
                               <Td className="">
-                                <img src={logoSvg} alt="" height="24" />
+                                <img
+                                  src={logoSvg}
+                                  alt=""
+                                  height="24"
+                                  onClick={() => handleImageClick(logoSvg)}
+                                  style={{ cursor: "pointer" }}
+                                />
                               </Td>
                               <Td className="d-flex align-items-center justify-content-center">
                                 <Button onClick={() => handleViewClick(rowData)} className="btn btn-primary">
@@ -69,13 +90,6 @@ const Propertytable = () => {
                             </Tr>
                           ))}
                         </Tbody>
-                        {/* <Pagination
-                          perPageData={perPageData}
-                          data={tabledata}
-                          currentPage={currentPage}
-                          setCurrentPage={setCurrentPage}
-                          currentData={tabledata}
-                          className="d-flex align-items-center justify-content-between text-center text-sm-start mb-3" /> */}
                       </Table>
                     </div>
                   </div>
@@ -94,10 +108,8 @@ const Propertytable = () => {
               <p><strong>Enquire ID:</strong> {selectedRow.property}</p>
               <p><strong>Property ID:</strong> {selectedRow.enquire}</p>
               <p><strong>Name:</strong> {selectedRow.name}</p>
-              <p><strong>Phone Number:</strong>   <Link to={`tel:${selectedRow.phone}`}>{selectedRow.phone}</Link>
-              </p>
-              <p><strong>Email:</strong>  <Link to={`mailto:${selectedRow.email}`}>{selectedRow.email}</Link></p>
-
+              <p><strong>Phone Number:</strong> <Link to={`tel:${selectedRow.phone}`}>{selectedRow.phone}</Link></p>
+              <p><strong>Email:</strong> <Link to={`mailto:${selectedRow.email}`}>{selectedRow.email}</Link></p>
             </div>
           )}
         </ModalBody>
@@ -105,8 +117,22 @@ const Propertytable = () => {
           <Button color="secondary" onClick={toggle}>Close</Button>
         </ModalFooter>
       </Modal>
+
+      <Modal isOpen={imageModal} toggle={toggleImageModal}>
+        <ModalHeader toggle={toggleImageModal}>Image</ModalHeader>
+        <ModalBody>
+          {selectedImage && (
+            <div className="text-center">
+              <img src={selectedImage} alt="Enlarged" style={{ maxWidth: "100%", height: "auto" }} />
+            </div>
+          )}
+        </ModalBody>
+        <ModalFooter>
+          <Button color="secondary" onClick={toggleImageModal}>Close</Button>
+        </ModalFooter>
+      </Modal>
     </React.Fragment>
   );
 };
 
-export default Propertytable;
+export default Careeertable;

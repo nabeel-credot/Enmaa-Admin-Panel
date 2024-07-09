@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Row,
   Col,
@@ -9,18 +9,20 @@ import {
   Container,
 } from "reactstrap";
 import Dropzone from "react-dropzone";
-
-// Breadcrumb
-import Breadcrumbs from "../../components/Common/Breadcrumb";
-
 import { Link } from "react-router-dom";
 
 const FormUpload = (props) => {
-
-  //meta title
+  // Meta title
   document.title = "Form File Upload | enmaa.com";
 
-  const [selectedFiles, setselectedFiles] = useState([]);
+  const [selectedFiles, setSelectedFiles] = useState([]);
+  const [existingImage, setExistingImage] = useState(props.existingImage || "");
+
+  useEffect(() => {
+    if (props.existingImage) {
+      setExistingImage(props.existingImage);
+    }
+  }, [props.existingImage]);
 
   function handleAcceptedFiles(files) {
     files.map((file) =>
@@ -29,7 +31,11 @@ const FormUpload = (props) => {
         formattedSize: formatBytes(file.size),
       })
     );
-    setselectedFiles(files);
+    setSelectedFiles(files);
+
+    if (props.onFileUpload) {
+      props.onFileUpload(files);
+    }
   }
 
   /**
@@ -49,13 +55,11 @@ const FormUpload = (props) => {
     <React.Fragment>
       <div>
         <Container fluid={true}>
-          {/* <Breadcrumbs title="Forms" breadcrumbItem="File Upload" /> */}
-
           <Row>
-            <Col className="col-12">
+            <Col className="col-12 mt-3">
               <Card>
                 <CardHeader>
-                  <h3 > {props.name}</h3>
+                  <h3>{props.name}</h3>
                   <p className="card-title-desc">
                     DropzoneJS is an open source library that provides
                     drag’n’drop file uploads with image previews.
@@ -84,43 +88,66 @@ const FormUpload = (props) => {
                       )}
                     </Dropzone>
                     <div className="dropzone-previews mt-3" id="file-previews">
-                      {selectedFiles.map((f, i) => {
-                        return (
-                          <Card
-                            className="mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete"
-                            key={i + "-file"}
-                          >
-                            <div className="p-2">
-                              <Row className="align-items-center">
-                                <Col className="col-auto">
-                                  <img
-                                    data-dz-thumbnail=""
-                                    height="80"
-                                    className="avatar-sm rounded bg-light"
-                                    alt={f.name}
-                                    src={f.preview}
-                                  />
-                                </Col>
-                                <Col>
-                                  <Link
-                                    to="#"
-                                    className="text-muted font-weight-bold"
-                                  >
-                                    {f.name}
-                                  </Link>
-                                  <p className="mb-0">
-                                    <strong>{f.formattedSize}</strong>
-                                  </p>
-                                </Col>
-                              </Row>
-                            </div>
-                          </Card>
-                        );
-                      })}
+                      {selectedFiles.map((f, i) => (
+                        <Card
+                          className="mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete"
+                          key={i + "-file"}
+                        >
+                          <div className="p-2">
+                            <Row className="align-items-center">
+                              <Col className="col-auto">
+                                <img
+                                  data-dz-thumbnail=""
+                                  height="80"
+                                  className="avatar-sm rounded bg-light"
+                                  alt={f.name}
+                                  src={f.preview}
+                                />
+                              </Col>
+                              <Col>
+                                <Link
+                                  to="#"
+                                  className="text-muted font-weight-bold"
+                                >
+                                  {f.name}
+                                </Link>
+                                <p className="mb-0">
+                                  <strong>{f.formattedSize}</strong>
+                                </p>
+                              </Col>
+                            </Row>
+                          </div>
+                        </Card>
+                      ))}
+                      {existingImage && (
+                        <Card
+                          className="mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete"
+                        >
+                          <div className="p-2">
+                            <Row className="align-items-center">
+                              <Col className="col-auto">
+                                <img
+                                  data-dz-thumbnail=""
+                                  height="80"
+                                  className="avatar-sm rounded bg-light"
+                                  alt="Existing Image"
+                                  src={existingImage}
+                                />
+                              </Col>
+                              <Col>
+                                <Link
+                                  to="#"
+                                  className="text-muted font-weight-bold"
+                                >
+                                  Existing Image
+                                </Link>
+                              </Col>
+                            </Row>
+                          </div>
+                        </Card>
+                      )}
                     </div>
                   </Form>
-
-   
                 </CardBody>
               </Card>
             </Col>

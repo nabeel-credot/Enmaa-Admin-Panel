@@ -17,7 +17,7 @@ import {
 //Import Breadcrumb
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 
-const FormEditors = () => {
+const FormEditors = (props) => {
     //meta title
     document.title = "Form Editors | enmaa.com";
 
@@ -36,15 +36,13 @@ const FormEditors = () => {
 
     return (
         <React.Fragment>
-            <div className="page-content">
-                <Container fluid={true}>
-                    <Breadcrumbs title="Forms" breadcrumbItem="Form Editors" />
+            
                     <Row>
                         <Col lg={12}>
                             <Card>
                                 <CardHeader>
-                                    <h4 className="card-title mb-1">Ckeditor Classic Editor</h4>
-                                    <p className="text-muted mb-0">Use <code>ckeditor-classic</code> class to set ckeditor classic editor.</p>
+                                    <h6 className=""> {props.name}</h6>
+                                    
                                 </CardHeader>
                                 <CardBody>
                                     {editor ? <CKEditor
@@ -63,8 +61,7 @@ const FormEditors = () => {
                             </Card>
                         </Col>
                     </Row>
-                </Container>
-            </div>
+              
         </React.Fragment>
     );
 };

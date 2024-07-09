@@ -1,72 +1,96 @@
 const janTopSellingData = [
     {
+        property:4121,
+        enquire:42121,
         name: "Product A",
-        desc: "Neque quis est",
-        value: 37
+        email: "Neque quis est@gmail.com",
+        phone: 376745765879
     },
     {
-        name: "Product B",
-        desc: "Quis autem iure",
-        value: 72
+        property: 4122,
+        enquire: 42122,
+        name:  " Product B",
+        email: "Quis autem iure",
+        phone: 726745765879
     },
     {
+        property: 4123,
+        enquire: 24123,
         name: "Product C",
-        desc: "Sed aliquam mauris.",
-        value: 54
+        email: "Sed aliquam mauris@gmail.com",
+        phone: 546745765879
     },
 ];
 
 const decTopSellingData = [
     {
+        property:4124,
+        Enquire:42124,
         name: "Product D",
-        desc: "Neque quis est",
-        value: 18
+        email: "Neque quis est@gmail.com",
+        phone: 186745765879
     },
     {
+        property:4125,
+        Enquire:42125,
         name: "Product E",
-        desc: "Quis autem iure",
-        value: 51
+        email: "Quis autem iure@gmail.com",
+        phone: 516745765879
     },
     {
+        property:412,
+        Enquire:4212,
         name: "Product F",
-        desc: "Sed aliquam mauris.",
-        value: 48
+        email: "Sed aliquam mauris.@gmail.com",
+        phone: 486745765879
     },
 ];
 
 const novTopSellingData = [
     {
+        property:412,
+        Enquire:4212,
         name: "Product G",
-        desc: "Neque quis est",
-        value: 27
+        email: "Neque quis est@gmail.com",
+        phone: 276745765879
     },
     {
+        property:412,
+        Enquire:4212,
         name: "Product H",
-        desc: "Quis autem iure",
-        value: 75
+        email: "Quis autem iure@gmail.com",
+        phone: 756745765879
     },
     {
+        property:412,
+        Enquire:4212,
         name: "Product I",
-        desc: "Sed aliquam mauris.",
-        value: 39
+        email: "Sed aliquam mauris.@gmail.com",
+        phone: 396745765879
     },
 ];
 
 const octTopSellingData = [
     {
+        property:412,
+        Enquire:4212,
         name: "Product J",
-        desc: "Neque quis est",
-        value: 56
+        email: "Neque quis est@gmail.com",
+        phone: 566745765879
     },
     {
+        property:412,
+        Enquire:4212,
         name: "Product K",
-        desc: "Quis autem iure",
-        value: 41
+        email: "Quis autem iure@gmail.com",
+        phone: 416745765879
     },
     {
+        property:412,
+        Enquire:4212,
         name: "Product L",
-        desc: "Sed aliquam mauris.",
-        value: 20
+        email: "Sed aliquam mauris.@gmail.com",
+        phone: 206745765879
     },
 ];
 
@@ -89,6 +113,8 @@ const octEarningData = [
 const chatData = [
     {
         id: 1,
+        property:412,
+        Enquire:4212,
         name: "Steven Franklin",
         msg: "Hello!",
         time: "10.00",
@@ -96,6 +122,8 @@ const chatData = [
     },
     {
         id: 2,
+        property:412,
+        Enquire:4212,
         name: "Admin",
         msg: "Hi, How are you? What about our next meeting?",
         time: "10.02",
@@ -103,6 +131,8 @@ const chatData = [
     },
     {
         id: 3,
+        property:412,
+        Enquire:4212,
         name: "Steven Franklin",
         msg: "Yeah everything is fine",
         time: "10.06",
@@ -110,6 +140,8 @@ const chatData = [
     },
     {
         id: 4,
+        property:412,
+        Enquire:4212,
         name: "Steven Franklin",
         msg: "& Next meeting tomorrow 10.00AM",
         time: "10.06",
@@ -117,6 +149,8 @@ const chatData = [
     },
     {
         id: 5,
+        property:412,
+        Enquire:4212,
         name: "Admin",
         msg: "Wow that's great",
         time: "10.07",

@@ -3,6 +3,7 @@ import { Col, Input, Label, Row } from 'reactstrap';
 import { Card, CardBody, CardHeader, Container, Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import Breadcrumbs from './../../../../components/Common/Breadcrumb';
+import FormUpload from './../../../../pages/Forms/FormUpload.js';
 
 const Section4form = () => {
   return (
@@ -14,7 +15,7 @@ const Section4form = () => {
               <Link to="/government-bot" className='icon-demo-content mb-4'>
                 <i className='fas fa-arrow-left'></i>
               </Link>
-              <Breadcrumbs title="Forms" breadcrumbItem="Section 4" />
+              <Breadcrumbs title="Forms" breadcrumbItem="Section 4 " />
             </div>
             <div className='d-flex flex-end gap-3 p-4'>
               <Link to="/form-elements" className="d-flex align-items-center gap-2 btn btn-outline-light">
@@ -87,6 +88,9 @@ const Section4form = () => {
                         <Label htmlFor="example-text-input" className="form-Label">Button Link</Label>
                         <Input className="form-control" type="text" defaultValue="https://enmaa-previews.vercel.app/services/service-1" id="example-text-input" />
                     </div>
+                </Col>
+                <Col lg={12}>
+              <FormUpload name="Icon Image"/>
                 </Col>
                   </Row>
                   <div className="d-flex justify-content-end gap-3 p-4">

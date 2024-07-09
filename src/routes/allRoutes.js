@@ -3,6 +3,15 @@ import { Navigate } from "react-router-dom";
 
 //Dashboard
 import Dashboard from "../page/Dashboard/Dashboard";
+//Enquire
+import Propertytable from "./../page/Enquire/Propertytable";
+import Careertable from "./../page/Enquire/careertable";
+import Complainttable from "./../page/Enquire/complainttable";
+import Contacttable from "./../page/Enquire/contacttable";
+import Investortable from "./../page/Enquire/investortable";
+
+
+
 // CMS
 //HOME
 import Hometable from "../page/CMS/Home/Hometable";
@@ -27,6 +36,7 @@ import SectionA4 from "../page/CMS/About/Section/Section4form";
 import SectionA5 from "../page/CMS/About/Section/Section5form";
 import SectionA6 from "../page/CMS/About/Section/Section6form";
 import Aboutsubtable from "../page/CMS/About-sub/Aboutsubtable";
+import Employeetable from "../page/CMS/About-sub/Employeetable";
 import SectionAS1 from "../page/CMS/About-sub/Section/Section1form";
 import SectionAS2 from "../page/CMS/About-sub/Section/Section2form";
 import SectionAS3 from "../page/CMS/About-sub/Section/Section3form";
@@ -62,7 +72,7 @@ import SectionD4 from "../page/CMS/Disclosure/Section/Section4form";
 import Servicetable from "../page/CMS/Service/Servicetable";
 import SectionS1 from "../page/CMS/Service/section/Section1form.jsx";
 import SectionS2 from "../page/CMS/Service/section/Section2form.jsx";
-import SectionS3 from "../page/CMS/Service/section/Section3form.jsx";
+import Serviceform from "../page/CMS/Service/section/Serviceform.jsx";
 import SectionS4 from "../page/CMS/Service/section/Section4form.jsx";
 
 // Annual-report
@@ -186,8 +196,15 @@ const userRoutes = [
   { path: "/", component: <Dashboard/> },
   //dashboard
   { path: "/dashboard", component: <Dashboard/> },
+  //Enquire
+  { path: "/investortable", component:  <Investortable/>},
+  { path: "/contacttable", component:  <Contacttable/>},
+  { path: "/complainttable", component:  <Complainttable/>},
+  { path: "/careertable", component:  <Careertable/>},
+  { path: "/propertytable", component:  <Propertytable/>},
+
   { path: "/home", component:  <Hometable/>},
-  { path: "/home/Section-1", component:  <Section1/>},
+  { path: "/home/section-1/:id", component:  <Section1/>},
   { path: "/home/Section-2", component:  <Section2/>},
   { path: "/home/Section-3", component:  <Section3/>},
   { path: "/home/Section-4", component:  <Section4/>},
@@ -211,6 +228,7 @@ const userRoutes = [
   { path: "/about/Section-6", component:  <SectionA6/>},
   //about-sub
   { path: "/about-sub", component:  <Aboutsubtable/>},
+  { path: "/about-sub/employee-table", component:  <Employeetable/>},
   { path: "/about-sub/Section-1", component:  <SectionAS1/>},
   { path: "/about-sub/Section-2", component:  <SectionAS2/>},
   { path: "/about-sub/Section-3", component:  <SectionAS3/>},
@@ -231,7 +249,7 @@ const userRoutes = [
   { path: "/service", component:  <Servicetable/>},
   { path: "/service/Section-1", component:  <SectionS1/>},
   { path: "/service/Section-2", component:  <SectionS2/>},
-  { path: "/service/Section-3", component:  <SectionS3/>},
+  { path: "/service/Serviceform", component:  <Serviceform/>},
   { path: "/service/Section-4", component:  <SectionS4/>},
   // { path: "/service/Section-5", component:  <SectionS5/>},
   { path: "/corporate", component:  <Corporatetable/>},

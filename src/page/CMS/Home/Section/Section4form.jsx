@@ -129,6 +129,12 @@ const Section4form = () => {
                     </div>
 
                 </Col>
+                <Col lg={12}>
+                    <div className="mb-3">
+                        <Label htmlFor="example-text-input" className="form-Label">Button link</Label>
+                        <Input className="form-control" type="text" defaultValue="" id="example-text-input" />
+                    </div>
+                </Col>
                 <div>
       {inputs.map((input, index) => (
         <Row key={input.id} className="mb-0">
