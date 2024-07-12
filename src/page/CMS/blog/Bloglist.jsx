@@ -1,18 +1,17 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
-import { Card, CardBody, Col, Container, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Row, UncontrolledTooltip } from 'reactstrap'
+import { Card, CardBody, Col, Container, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Row, UncontrolledTooltip } from 'reactstrap';
 
 //Import Breadcrumb
-import Breadcrumbs from "../../components/Common/Breadcrumb";
+// import Breadcrumbs from "./../../components/Common/Breadcrumb";
 
-//Import blog grid data
-import {blogGridData} from "../../common/data/about"
-
+//Import BlogList Data
+import {blogGridData} from './../../../common/data/about.js';
 //Import Icons
 import FeatherIcon from "feather-icons-react";
 
 
-const blogGrid = () => {
+const bloglist= () => {
 
   document.title = "Blog Grid | enmaa.com";
 
@@ -27,7 +26,7 @@ const blogGrid = () => {
     <React.Fragment>
       <div className="page-content">
         <Container fluid>
-          <Breadcrumbs title="Blog" breadcrumbItem="Blog Grid" />
+          {/* <Breadcrumbs title="Blog" breadcrumbItem="Blog Grid" /> */}
           <Row className="align-items-center">
             <Col md={6}>
               <div className="mb-3">
@@ -40,28 +39,28 @@ const blogGrid = () => {
                 <div>
                   <ul className="nav nav-pills">
                     <li className="nav-item">
-                      <Link className="nav-link" to="/blog-list" id="list"><i className="bx bx-list-ul"></i>
+                      {/* <Link className="nav-link" to="/blog-list" id="list"><i className="bx bx-list-ul"></i>
                         <UncontrolledTooltip placement="top" target="list">
                           List
                         </UncontrolledTooltip>
-                      </Link>
+                      </Link> */}
                     </li>
                     <li className="nav-item">
-                      <Link className="nav-link active" to="/blog-grid" id="grid"><i className="bx bx-grid-alt"></i>
+                      {/* <Link className="nav-link active" to="/blog-grid" id="grid"><i className="bx bx-grid-alt"></i>
                         <UncontrolledTooltip placement="top" target="grid">
                           Grid
                         </UncontrolledTooltip>
-                      </Link>
+                      </Link> */}
                     </li>
                   </ul>
                 </div>
                 <div>
-                  <Link to="blogform" className="btn btn-light"><i className="bx bx-plus me-1"></i> Add New</Link>
+                  <Link to="/blogform" className="btn btn-light"><i className="bx bx-plus me-1"></i> Add New</Link>
                 </div>
 
-                <div className="dropdown">
+                {/* <div1 className="dropdown">
                   {/* <Link className="btn btn-link text-muted py-1 font-size-16 shadow-none dropdown-toggle" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> */}
-                    {/* <i className="bx bx-dots-horizontal-rounded"></i> */}
+                    {/* <i className="bx bx-dots-horizontal-rounded"></i> 
                     <Dropdown
                       isOpen={search_Menu}
                       toggle={toggleSearch}
@@ -96,8 +95,8 @@ const blogGrid = () => {
                         </DropdownItem>
                       </DropdownMenu>
                     </Dropdown>
-                  {/* </Link> */}
-                </div>
+                  {/* </Link>
+                </div1> */}
               </div>
             </Col>
           </Row>
@@ -116,7 +115,7 @@ const blogGrid = () => {
                       <h5 className=""><a href="#" className="text-dark">{item.title}</a></h5>
                       <p className="mb-0 font-size-15">{item.desc}</p>
                       <div className="mt-3">
-                        <a href="#" className="align-middle font-size-15">Read more <i className="mdi mdi-chevron-right"></i></a>
+                        <a href="blogForm" className="align-middle font-size-15">Read more <i className="mdi mdi-chevron-right"></i></a>
                       </div>
                     </CardBody>
                   </Card>
@@ -160,4 +159,4 @@ const blogGrid = () => {
   )
 }
 
-export default blogGrid
+export default bloglist

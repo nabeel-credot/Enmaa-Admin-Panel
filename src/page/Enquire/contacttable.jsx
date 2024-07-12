@@ -29,7 +29,7 @@ const contacttable = () => {
    <React.Fragment>
      <div className="page-content">
        <div className="container-fluid">
-         <Breadcrumbs title="Tables" breadcrumbItem="career Enquire " />
+         <Breadcrumbs title="Tables" breadcrumbItem="Career Enquire " />
 
          <Row>
            <Col>

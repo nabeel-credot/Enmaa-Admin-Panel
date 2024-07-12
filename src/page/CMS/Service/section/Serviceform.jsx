@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Col, Input, Label, Row, FormGroup, Button } from 'reactstrap';
-import { Card, CardBody, CardHeader, Container } from "reactstrap";
+import { Col, Input, Label, Row, FormGroup, Button, Container, Card, CardBody, CardHeader } from 'reactstrap';
 import { Link } from "react-router-dom";
 import Breadcrumbs from '../../../../components/Common/Breadcrumb';
 import FormEditors from './../../../../pages/Forms/FormEditors.js';
@@ -15,24 +14,9 @@ const Serviceform = () => {
     { id: 2, name: 'Service 2' },
     { id: 3, name: 'Service 3' }
   ]);
+  const [formData, setFormData] = useState({});
 
-  const handleIconChange = (event) => {
-    setIconFile(event.target.files[0]);
-  };
-
-  const handleImageChange = (event) => {
-    setImageFile(event.target.files[0]);
-  };
-
-  const handleRemoveIcon = () => {
-    setIconFile(null);
-  };
-
-  const handleRemoveImage = () => {
-    setImageFile(null);
-  };
-
-  const handleServiceChange = (event) => {
+  const   handleServiceChange = (event) => {
     const value = event.target.value;
     if (value === 'sub-service') {
       setIsSubService(true);
@@ -42,8 +26,20 @@ const Serviceform = () => {
     }
   };
 
+  const handleEditorChange = (data) => {
+    setFormData((prevData) => ({ ...prevData, ...data }));
+  };
+
   const handleSubmit = () => {
-    // Handle the form submission, including file uploads
+    const dataToSubmit = {
+      ...formData,
+      iconFile,
+      imageFile,
+      selectedService,
+      isSubService
+    };
+    console.log('Form Data:', JSON.stringify(dataToSubmit));
+    // Here you would handle the form submission, such as sending the data to a server
   };
 
   return (
@@ -101,12 +97,20 @@ const Serviceform = () => {
                     </Col>
                     <Col lg={6}>
                       <FormGroup>
-                        <Label for="serviceSelect">Service or Sub-service</Label>
-                        <Input type="select" id="serviceSelect" onChange={handleServiceChange}>
-                          <option value="">Select</option>
-                          <option value="service">Service</option>
-                          <option value="sub-service">Sub-service</option>
-                        </Input>
+                        <div>
+                          <FormGroup check inline>
+                            <Label check>
+                              <Input type="radio" name="serviceType" value="service" onChange={handleServiceChange} />{' '}
+                              Service
+                            </Label>
+                          </FormGroup>
+                          <FormGroup check inline>
+                            <Label check>
+                              <Input type="radio" name="serviceType" value="sub-service" onChange={handleServiceChange} />{' '}
+                              Sub-service
+                            </Label>
+                          </FormGroup>
+                        </div>
                       </FormGroup>
                     </Col>
                     {isSubService && (
@@ -123,37 +127,13 @@ const Serviceform = () => {
                       </Col>
                     )}
                     <Col lg={12}>
-                      <FormEditors name="Service Points in English" /></Col>
+                      <FormEditors name="Service Points in English" onChange={handleEditorChange} />
+                    </Col>
                     <Col lg={12}>
-                      <FormEditors name="Service Points in Arabic" /></Col>
-                    <Col lg={6}>
-                      <FormGroup>
-                        <Label for="iconUpload">Upload Icon</Label>
-                        <Input type="file" id="iconUpload" onChange={handleIconChange} />
-                      </FormGroup>
-                      {iconFile && (
-                        <Col lg={3} className="mb-3">
-                          <div className="d-flex flex-column align-items-center">
-                            <img src={URL.createObjectURL(iconFile)} alt="uploaded-icon" className="img-fluid mb-2" />
-                            <Button color="danger" onClick={handleRemoveIcon}>Remove</Button>
-                          </div>
-                        </Col>
-                      )}
+                      <FormEditors name="Service Points in Arabic" onChange={handleEditorChange} />
                     </Col>
-                    <Col lg={6}>
-                      <FormGroup>
-                        <Label for="imageUpload">Upload Image</Label>
-                        <Input type="file" id="imageUpload" onChange={handleImageChange} />
-                      </FormGroup>
-                      {imageFile && (
-                        <Col lg={3} className="mb-3">
-                          <div className="d-flex flex-column align-items-center">
-                            <img src={URL.createObjectURL(imageFile)} alt="uploaded-image" className="img-fluid mb-2" />
-                            <Button color="danger" onClick={handleRemoveImage}>Remove</Button>
-                          </div>
-                        </Col>
-                      )}
-                    </Col>
+                    
+                    
                   </Row>
                   <div className="d-flex justify-content-end gap-3 p-4">
                     <Button color="success" onClick={handleSubmit}>

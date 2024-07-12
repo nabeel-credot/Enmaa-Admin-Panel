@@ -102,8 +102,8 @@ import ContactsProfile from "../pages/Contacts/ContactsProfile/contacts-profile"
 
 //blog
 import BlogGrid from "../pages/Blog/blogGrid"
-import BlogList from "../pages/Blog/blogList"
-import BlogDetails from "../pages/Blog/blogDetails"
+import BlogList from "./../page/CMS/blog/Bloglist"
+import BlogForm from"./../page/CMS/blog/blogForm"
 
 //Utility
 import PagesStarter from "../pages/Utility/StarterPage";
@@ -301,7 +301,7 @@ const userRoutes = [
   //blog
   {path: "/blog-grid", component: <BlogGrid/> },
   {path: "/blog-list", component: <BlogList/> },
-  {path: "/blog-details", component: <BlogDetails/> },
+  {path: "/blogform", component: <BlogForm/> },
 
   //Utility
   { path: "/pages-starter", component: <PagesStarter/> },

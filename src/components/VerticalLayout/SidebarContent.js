@@ -221,7 +221,7 @@ const SidebarContent = props => {
                   <Link to="/finanical-statement">{props.t("Finanical Statement")}</Link>
                 </li>
                 <li>
-                  <Link to="/b">{props.t("Blog Details")}</Link>
+                  <Link to="/blog-list">{props.t("Blog Details")}</Link>
                 </li>
                 {/* <li>
                   <Link to="/pages-404">{props.t("Error 404")}</Link>
