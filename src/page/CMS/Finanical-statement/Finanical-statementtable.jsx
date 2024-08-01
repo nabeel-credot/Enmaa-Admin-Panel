@@ -1,120 +1,191 @@
-import React, { useMemo, useState } from "react"
+import React, { useState } from "react";
+import { Row, Col, Card, CardBody, CardHeader, Button, Form, FormGroup, Label, Input } from "reactstrap";
+import BootstrapTable from "react-bootstrap-table-next";
+import axios from 'axios';
+import Breadcrumbs from "../../../components/Common/Breadcrumb.js";
+import { useQuery, useMutation, useQueryClient } from 'react-query';
 
-import { Row, Col, Card, CardBody, CardHeader ,Input, Label} from "reactstrap"
+const API_URL = 'http://localhost:4001/api';
+const QUERY_KEY = 'financialStatements';
 
-import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table"
-import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css"
-//Import Breadcrumb
-import Breadcrumbs from "../../../components/Common/Breadcrumb.js"
-import { tabledata } from "../../../common/data/index.js"
-import logoSvg from './../../../assets/images/logo-sm.png';
-import { Link } from "react-router-dom"
-import Pagination from '../../../components/Common/Pagination.js';
-const Finanicaltable = () => {
-  //meta title
-  document.title = "Responsive Table | enmaa.com";
+// API Service
+const FinancialStatementService = {
+  fetchAll: async () => {
+    const { data } = await axios.get(`${API_URL}/financial-statements`);
+    return data.financialStatements;
+  },
+  add: async (newStatement) => {
+    const formData = new FormData();
+    formData.append('year', newStatement.year);
+    newStatement.viewLinks.forEach((file, index) => {
+      formData.append('file', file);
+    });
+    const { data } = await axios.post(`${API_URL}/financial-statements`, formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+    return data;
+  },
+  delete: async (id) => {
+    await axios.delete(`${API_URL}/financial-statements/${id}`);
+    return id;
+  }
+};
+
+// Custom Hooks
+const useFinancialStatements = () => useQuery(QUERY_KEY, FinancialStatementService.fetchAll);
+
+const useAddFinancialStatement = () => {
+  const queryClient = useQueryClient();
+  return useMutation(FinancialStatementService.add, {
+    onSuccess: () => queryClient.invalidateQueries(QUERY_KEY),
+  });
+};
+
+const useDeleteFinancialStatement = () => {
+  const queryClient = useQueryClient();
+  return useMutation(FinancialStatementService.delete, {
+    onSuccess: () => queryClient.invalidateQueries(QUERY_KEY),
+  });
+};
+
+const EditableTables = () => {
+  const { data: statements, isLoading: isFetching } = useFinancialStatements();
+  const addMutation = useAddFinancialStatement();
+  const deleteMutation = useDeleteFinancialStatement();
+
+  const [newStatement, setNewStatement] = useState({
+    year: "",
+    viewLinks: [],
+  });
+  const [files, setFiles] = useState([]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewStatement({
+      ...newStatement,
+      [name]: value,
+    });
+  };
+
+  const handleFileChange = (e) => {
+    setFiles(e.target.files);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (files.length === 0) return;
+    const newStatementData = { ...newStatement, viewLinks: files };
+    addMutation.mutate(newStatementData, {
+      onSuccess: () => {
+        setNewStatement({ year: "", viewLinks: [] });
+        setFiles([]);
+      },
+      onError: (error) => {
+        console.error('Error adding statement:', error);
+      },
+    });
+  };
+
+  const handleDelete = (id) => {
+    deleteMutation.mutate(id, {
+      onError: (error) => {
+        console.error("Error deleting statement:", error);
+      },
+    });
+  };
+
+  const columns = [
+    {
+      dataField: "_id",
+      text: "ID",
+      hidden: true
+    },
+    {
+      dataField: "year",
+      text: "Year",
+    },
+    {
+      dataField: "viewLinks",
+      text: "Statements",
+      formatter: (cellContent, row) => (
+        <ul>
+          {row.viewLinks.map((link, index) => (
+            <li key={index}>
+              <a href={link} target="_blank" rel="noopener noreferrer">{link}</a>
+            </li>
+          ))}
+        </ul>
+      ),
+    },
+    {
+      dataField: "action",
+      text: "Action",
+      formatter: (cellContent, row) => (
+        <div className="d-flex gap-4">
+          <button className="btn btn-outline-light" onClick={() => handleDelete(row._id)}> <i className="mdi mdi-delete"></i> Delete </button>
+        </div>
+      ),
+    },
+  ];
+
+  // meta title
+  document.title = "Editable | enmaa.com";
 
   return (
     <React.Fragment>
       <div className="page-content">
         <div className="container-fluid">
-          <Breadcrumbs title="Tables" breadcrumbItem=" Goverment Bots page" />
-          <Row>
-            <h4>Meta Section</h4>
-            <Col lg={6}>
-                    <div className="mb-3">
-                        <Label htmlFor="example-text-input" className="form-Label">Meta Name in English</Label>
-                        <Input className="form-control" type="text" defaultValue="READ MORE" id="example-text-input" />
-                    </div>
-                </Col>
-                <Col lg={6}>
-                    <div className="mb-3">
-                        <Label htmlFor="example-search-input" className="form-Label">Meta Name in Arabic</Label>
-                        <Input dir="rtl" className="form-control" type="text" defaultValue="اقرأ أكثر" id="example-text-input" />
-                    </div>
+          <Breadcrumbs title="Tables" breadcrumbItem="Statements Table" />
 
-                </Col>
-                
-                <Col lg={6}>
-                    <div className="mb-3">
-                        <Label htmlFor="example-text-input" className="form-Label">Meta Content in English</Label>
-                        <Input className="form-control" type="text" defaultValue="READ MORE" id="example-text-input" />
-                    </div></Col>
-          <Col lg={6}>
-                    <div className="mb-3">
-                        <Label htmlFor="example-search-input" className="form-Label">Meta Content in Arabic</Label>
-                        <Input dir="rtl" className="form-control" type="text" defaultValue="٣٠+" id="example-text-input" />
-                    </div>
-
-                
-                </Col>
-                <Col lg={4}>
-                    <div className="mb-3">
-                        <Label htmlFor="example-text-input" className="form-Label">Meta Slug</Label>
-                        <Input className="form-control" type="text" defaultValue="/home" id="example-text-input" />
-                    </div>
-                </Col>
-            </Row>
-            <div className='d-flex justify-content-end gap-3 p-4'>
-                <Link to="/form-elements"className="  d-flex align-items-center gap-1 btn btn-success"><i className="mdi mdi-content-save"></i>Update</Link>
-                </div>
-           
           <Row>
             <Col>
               <Card>
                 <CardHeader>
-                  <h4 className="card-title"></h4>
-                  <p className="card-title-desc">This is an experimental awesome solution for responsive tables with complex data.</p>
+                  <h4 className="card-title">Datatable Editable</h4>
                 </CardHeader>
                 <CardBody>
-                  <div className="table-rep-plugin">
-                    <div
-                      className="table-responsive mb-0"
-                      data-pattern="priority-columns"
-                    >
-                      <Table
-                        id="tech-companies-1"
-                        className="table table-striped table-bordered"
-                      >
-                        <Thead>
-                          <Tr>
-                            <Th data-priority="1">section</Th>
-                            <Th data-priority="1">Title</Th>
-                            {/* <Th data-priority="3">Sub Title</Th> */}
-                            <Th data-priority="1">Description </Th>
-                            <Th data-priority="3">ON/OFF</Th>
-                            <Th data-priority="3">Action</Th>
-                          </Tr>
-                        </Thead>
-                        <Tbody>
-                          {tabledata.map((rowData, index) => (
-                            <Tr key={index}>
-                              <Th>
-                                 {rowData.section}
-                              </Th>
-                              <Td>{rowData.title}</Td>
-                              {/* <Td>{rowData.subtitle}</Td> */}
-                              <Td className="w-30 h-20 overflow-hidden">{rowData.description}</Td>
-                              <Td className=""><div className="form-check form-switch">
-  <Input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
-  {/* <Label className="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</Label> */}
-</div></Td>
-                              <Td className="d-flex align-items-center justify-content-center  gap-3 "><Link to="https://enmaa-previews.vercel.app/" className=" d-flex align-items-center gap-2 btn btn-outline-light" target="_blank"><i className="mdi mdi-open-in-new"></i>Preview</Link>
-                              <Link to={rowData.sectionlink} className=" d-flex align-items-center gap-2  btn btn-outline-light "><i className="mdi  mdi-view-dashboard-edit-outline"></i>Edit</Link></Td>
-                           
-                            </Tr>
-                          ))}
-                        </Tbody>
-                        {/* <Pagination
-                          perPageData={perPageData}
-                          data={tabledata}
-                          currentPage={currentPage}
-                          setCurrentPage={setCurrentPage}
-                          currentData={tabledata}
-                          className="d-flex align-items-center justify-content-between text-center text-sm-start mb-3" /> */}
-                      </Table>
-                    </div>
+                  <div className="table-responsive">
+                    <BootstrapTable
+                      keyField="_id"
+                      data={statements || []}
+                      columns={columns}
+                      loading={isFetching}
+                    />
                   </div>
+                  <Form className="mt-4" onSubmit={handleSubmit}>
+                    <Row form>
+                      <Col md={3}>
+                        <FormGroup>
+                          <Label for="year">Year</Label>
+                          <Input
+                            type="text"
+                            name="year"
+                            id="year"
+                            value={newStatement.year}
+                            onChange={handleInputChange}
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col md={3}>
+                        <FormGroup>
+                          <Label for="viewLinks">View Links</Label>
+                          <Input
+                            type="file"
+                            name="viewLinks"
+                            id="viewLinks"
+                            multiple
+                            accept="image/*"
+                            onChange={handleFileChange}
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col className="align-self-end mb-3">
+                        <Button color="primary" type="submit" disabled={addMutation.isLoading || files.length === 0}>
+                          {addMutation.isLoading ? 'Uploading...' : 'Add Statement'}
+                        </Button>
+                      </Col>
+                    </Row>
+                  </Form>
                 </CardBody>
               </Card>
             </Col>
@@ -122,7 +193,7 @@ const Finanicaltable = () => {
         </div>
       </div>
     </React.Fragment>
-  )
-}
+  );
+};
 
-export default Finanicaltable
+export default EditableTables;

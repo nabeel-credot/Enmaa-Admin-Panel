@@ -16,16 +16,17 @@ import Investortable from "./../page/Enquire/investortable";
 //HOME
 import Hometable from "../page/CMS/Home/Hometable";
 import Section1 from "../page/CMS/Home/Section/Section1form";
+import Herosection from "../page/CMS/Home/Section/Herosection";
 import Section2 from "../page/CMS/Home/Section/Section2form";
 import Section3 from "../page/CMS/Home/Section/Section3form";
 import Section4 from "../page/CMS/Home/Section/Section4form";
-import Section5 from "../page/CMS/Home/Section/Section5form";
+import Section5 from "../page/CMS/Home/Section/Serviceform.jsx";
 import Section6 from "../page/CMS/Home/Section/Section6form";
 import Section7 from "../page/CMS/Home/Section/Section7form";
 import Section8 from "../page/CMS/Home/Section/Section8form";
 import Section9 from "../page/CMS/Home/Section/Section9form";
 import Section10 from "../page/CMS/Home/Section/Section10form";
-import Section11 from "../page/CMS/Home/Section/Section11form";
+import Section11 from "../page/CMS/Home/Section/blogform.jsx";
 
 
 import Abouttable from "../page/CMS/About/Abouttable";
@@ -42,7 +43,6 @@ import SectionAS2 from "../page/CMS/About-sub/Section/Section2form";
 import SectionAS3 from "../page/CMS/About-sub/Section/Section3form";
 import SectionAS4 from "../page/CMS/About-sub/Section/Section4form";
 import SectionAS5 from "../page/CMS/About-sub/Section/Section5form";
-
 // Government
 
 import  Governmenttable from "../page/CMS/Government-bot/Governmenttable";
@@ -81,9 +81,13 @@ import SectionAR1 from "../page/CMS/Annual-report/Section/Section1form";
 import SectionAR2 from "../page/CMS/Annual-report/Section/Section2form";
 import SectionAR3 from "../page/CMS/Annual-report/Section/Section3form";
 import SectionAR4 from "../page/CMS/Annual-report/Section/Section4form";
+//finanical-statement
+import Finanstatement from "../page/CMS/Finanical-statement/statementable.jsx"
 
 import Calendar from "../pages/Calendar/index";
-
+//menu
+import Footer from "../page/CMS/Menu/footer";
+import Navbar from "../page/CMS/Menu/navbar";
 //Chat
 import Chat from "../pages/Chat/Chat";
 
@@ -205,10 +209,11 @@ const userRoutes = [
 
   { path: "/home", component:  <Hometable/>},
   { path: "/home/section-1/:id", component:  <Section1/>},
+  { path: "/home/about/:id", component:  <Herosection/>},
   { path: "/home/Section-2", component:  <Section2/>},
   { path: "/home/Section-3", component:  <Section3/>},
   { path: "/home/Section-4", component:  <Section4/>},
-  { path: "/home/Section-5", component:  <Section5/>},
+  { path: "/home/serviceform", component:  <Section5/>},
 
 
   { path: "/home/Section-6", component:  <Section6/>},
@@ -228,7 +233,7 @@ const userRoutes = [
   { path: "/about/Section-6", component:  <SectionA6/>},
   //about-sub
   { path: "/about-sub", component:  <Aboutsubtable/>},
-  { path: "/about-sub/employee-table", component:  <Employeetable/>},
+  { path: "/about-sub/employee-table", component:<Employeetable/>},
   { path: "/about-sub/Section-1", component:  <SectionAS1/>},
   { path: "/about-sub/Section-2", component:  <SectionAS2/>},
   { path: "/about-sub/Section-3", component:  <SectionAS3/>},
@@ -236,7 +241,7 @@ const userRoutes = [
   { path: "/about-sub/Section-5", component:  <SectionAS5/>},
 
   //government-bot
-  { path: "/government-bot", component:  <Governmenttable/>},
+  { path: "/government-bot", component:<Governmenttable/>},
   { path: "/government-bot/Section-1", component:  <SectionG1/>},
   { path: "/government-bot/Section-2", component:  <SectionG2/>},
   { path: "/government-bot/Section-3", component:  <SectionG3/>},
@@ -244,8 +249,8 @@ const userRoutes = [
   { path: "/government-bot/Section-5", component:  <SectionG5/>},
 
   // { path: "/government-bot/Section-5", component:  <SectionG5/>},
-
   //service
+  
   { path: "/service", component:  <Servicetable/>},
   { path: "/service/Section-1", component:  <SectionS1/>},
   { path: "/service/Section-2", component:  <SectionS2/>},
@@ -272,8 +277,15 @@ const userRoutes = [
   { path: "/annual-report/Section-3", component:  <SectionAR3/>},
   { path: "/annual-report/Section-4", component:  <SectionAR4/>},
   // { path: "/annual-report/Section-5", component:  <SectionAR5/>},
+//finanical-statement
+{ path: "/finanical-statement", component: <Finanstatement/> },
+{ path: "/finanical-statement/Section-1", component:  <SectionAR1/>},
+{ path: "/finanical-statement/Section-2", component:  <SectionAR2/>},
+{ path: "/finanical-statement/Section-3", component:  <SectionAR3/>},
+{ path: "/finanical-statement/Section-4", component:  <SectionAR4/>},
 
-
+  { path: "/footer", component:  <Footer/>},
+  { path: "/navbar", component:  <Navbar/>},
   //profile
   { path: "/profile", component: <UserProfile/> },
 

@@ -1,89 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Col, Card, CardBody, CardHeader, Button, Form, FormGroup, Label, Input } from "reactstrap";
 import BootstrapTable from "react-bootstrap-table-next";
-import cellEditFactory from "react-bootstrap-table2-editor";
-import logoSvg from './../../../assets/images/logo-sm.png';
-
-// Import Breadcrumb
+import axios from 'axios';
 import Breadcrumbs from "../../../components/Common/Breadcrumb.js";
 
-const initialProducts = [
-  { id: 1, name: "David McHenry", position: "Board Member", photo: logoSvg },
-  { id: 2, name: "Frank Kirk", position: "Chairman", photo: logoSvg },
-  { id: 3, name: "Rafael Morales", position: "Senior manager", photo: logoSvg },
-  { id: 4, name: "Mark Ellison", position: "Board Member", photo: logoSvg },
-  { id: 5, name: "Minnie Walter", position: "Senior manager", photo: logoSvg },
-];
+import { getTableData, createTableData, deleteTableDataById } from './../../../api/team.js';
 
-// Custom editor component for file upload
-const PhotoUploadEditor = (props) => {
-  const [photo, setPhoto] = useState(props.defaultValue);
+const handleFileUpload = async (files) => {
+  if (files && files.length > 0) {
+    const fileData = new FormData();
+    fileData.append('media', files[0]);
 
-  const handlePhotoChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (upload) => {
-        setPhoto(upload.target.result);
-        props.onUpdate(upload.target.result);
-      };
-      reader.readAsDataURL(file);
+    try {
+      const response = await axios.post('http://localhost:4001/api/media', fileData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+
+      const filePath = `/${response.data.filename}`;
+      return filePath;
+    } catch (error) {
+      console.error('Error in file upload:', error.response ? error.response.data : error.message);
+      throw error;
     }
-  };
-
-  return (
-    <div>
-      <input type="file" accept="image/*" onChange={handlePhotoChange} />
-      {photo && <img src={photo} alt="uploaded" style={{ width: "50px", marginTop: "10px" }} />}
-    </div>
-  );
+  }
 };
 
-const columns = [
-  {
-    dataField: "id",
-    text: "ID",
-  },
-  {
-    dataField: "name",
-    text: "Name",
-  },
-  {
-    dataField: "position",
-    text: "Position",
-  },
-  {
-    dataField: "photo",
-    text: "Photo",
-    formatter: (cellContent, row) => (
-      <div>
-        <img src={row.photo} alt={row.name} style={{ width: "50px" }} />
-      </div>
-    ),
-    editorRenderer: (editorProps, value, row, column, rowIndex, columnIndex) => (
-      <PhotoUploadEditor {...editorProps} value={value} />
-    ),
-  },
-  {
-    dataField: "action",
-    text: "Action",
-    formatter: (cellContent, row) => (
-      <div className="d-flex gap-4">
-        <button className="btn btn-outline-light"> <i className="mdi mdi-delete"></i> Delete </button>
-        <button className="btn btn-outline-light"> <i className="mdi mdi-view-dashboard-edit-outline"></i> Update </button>
-      </div>
-    ),
-  },
-];
-
 const EditableTables = () => {
-  const [products, setProducts] = useState(initialProducts);
+  const [team, setTeam] = useState([]);
   const [newPerson, setNewPerson] = useState({
-    id: "",
     name: "",
     position: "",
-    photo: logoSvg,
+    imageUrl: '',
   });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getTableData();
+      setTeam(data);
+    };
+    fetchData();
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -93,10 +49,74 @@ const EditableTables = () => {
     });
   };
 
-  const handleAddPerson = () => {
-    setProducts([...products, { ...newPerson, id: products.length + 1 }]);
-    setNewPerson({ id: "", name: "", position: "", photo: logoSvg });
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      try {
+        const filePath = await handleFileUpload([file]);
+        setNewPerson({ ...newPerson, imageUrl: filePath });
+      } catch (error) {
+        console.error('Error uploading file:', error);
+      }
+    }
   };
+
+  const handleAddPerson = async () => {
+    try {
+      const addedPerson = await createTableData(newPerson);
+      if (addedPerson) {
+        setTeam([...team, addedPerson]);
+        setNewPerson({ name: "", position: "", imageUrl: '' });
+      }
+    } catch (error) {
+      console.error('Error adding person:', error);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await deleteTableDataById(id);
+      setTeam(team.filter(product => product._id !== id));
+      
+      window.location.reload();
+    } catch (error) {
+      console.error("Error deleting product:", error);
+    }
+  };
+
+  const columns = [
+    {
+      dataField: "_id",
+      text: "ID",
+      hidden: true
+    },
+    {
+      dataField: "name",
+      text: "Name",
+    },
+    {
+      dataField: "position",
+      text: "Position",
+    },
+    {
+      dataField: "imageUrl",
+      text: "Photo",
+      formatter: (cellContent, row) => (
+        <div>
+          <img src={`http://localhost:4001/media${row.imageUrl}`}alt={row.name} style={{ width: "50px" }} />
+        </div>
+      ),
+    },
+    {
+      dataField: "action",
+      text: "Action",
+      formatter: (cellContent, row) => (
+        <div className="d-flex gap-4">
+          <button className="btn btn-outline-light" onClick={() => handleDelete(row._id)}> <i className="mdi mdi-delete"></i> Delete </button>
+        </div>
+      ),
+    },
+  ];
 
   // meta title
   document.title = "Editable | enmaa.com";
@@ -116,10 +136,9 @@ const EditableTables = () => {
                 <CardBody>
                   <div className="table-responsive">
                     <BootstrapTable
-                      keyField="id"
-                      data={products}
+                      keyField="_id"
+                      data={team}
                       columns={columns}
-                      cellEdit={cellEditFactory({ mode: "click" })}
                     />
                   </div>
                   <Form className="mt-4">
@@ -156,20 +175,11 @@ const EditableTables = () => {
                             name="photo"
                             id="photo"
                             accept="image/*"
-                            onChange={(e) => {
-                              const file = e.target.files[0];
-                              if (file) {
-                                const reader = new FileReader();
-                                reader.onload = (upload) => {
-                                  setNewPerson({ ...newPerson, photo: upload.target.result });
-                                };
-                                reader.readAsDataURL(file);
-                              }
-                            }}
+                            onChange={handleFileChange}
                           />
                         </FormGroup>
                       </Col>
-                      <Col  className="align-self-end mb-3">
+                      <Col className="align-self-end mb-3">
                         <Button color="primary" onClick={handleAddPerson}>
                           Add Person
                         </Button>

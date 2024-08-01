@@ -2,10 +2,10 @@ import React from 'react';
 import { Col, Input, Label, Row } from 'reactstrap';
 import { Card, CardBody, CardHeader, Container } from "reactstrap";
 import { Link } from "react-router-dom";
-import Breadcrumbs from './../../../../components/Common/Breadcrumb';
+import Breadcrumbs from '../../../../components/Common/Breadcrumb';
 import Select from 'react-select'; // Assuming you use react-select for better select box handling
 
-const Section5form = () => {
+const Serviceform = () => {
     const options = [
         { value: 0, label: 'service-1', isSelected: true },
         { value: 1, label: 'service-2', isSelected: true, },
@@ -99,4 +99,4 @@ const Section5form = () => {
     );
 }
 
-export default Section5form;
+export default Serviceform;

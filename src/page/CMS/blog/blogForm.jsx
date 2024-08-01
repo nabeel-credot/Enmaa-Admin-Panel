@@ -57,7 +57,7 @@ const BlogForm = ({ initialData = {}, onSubmit }) => {
         <Container fluid>
           <div className='d-flex justify-content-between'>
             <div className=''>
-              <Link to="/blog" className='icon-demo-content mb-4'>
+              <Link to="/blog-list" className='icon-demo-content mb-4'>
                 <i className='fas fa-arrow-left'></i>
               </Link>
               <Breadcrumbs title="Forms" breadcrumbItem="Blog" />

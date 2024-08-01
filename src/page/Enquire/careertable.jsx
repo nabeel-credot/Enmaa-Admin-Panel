@@ -1,51 +1,74 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Col, Card, CardBody, CardHeader, Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
-import { janTopSellingData } from "../../common/data";
-import logoSvg from "../../assets/images/logo-sm.png";
-import { Link } from "react-router-dom";
+import pdf from "../../assets/images/pdf.png";
+
+import { getCareers, getCareerById } from './../../api/getapi.js';
 
 const Careeertable = () => {
-  // Meta title
-  document.title = "Responsive Table | enmaa.com";
-
-  // State to manage modal visibility
+  const [careers, setCareers] = useState([]);
+  // const [selectedCareer, setSelectedCareer] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [modal, setModal] = useState(false);
-
-  // State to store selected row data
   const [selectedRow, setSelectedRow] = useState(null);
-
-  // State to manage image modal visibility
   const [imageModal, setImageModal] = useState(false);
-
-  // State to store selected image
   const [selectedImage, setSelectedImage] = useState(null);
 
-  // Function to toggle modal visibility
-  const toggle = () => setModal(!modal);
+  useEffect(() => {
+    const fetchCareers = async () => {
+      try {
+        const data = await getCareers();
+        console.log('Fetched careers data:', data); 
+        setCareers(data.careerForm || []); 
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchCareers();
+  }, []);
 
-  // Function to toggle image modal visibility
+  const handleSelectCareer = async (id) => {
+    setLoading(true);
+    try {
+      const data = await getCareerById(id);
+      setSelectedCareer(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const toggle = () => setModal(!modal);
   const toggleImageModal = () => setImageModal(!imageModal);
 
-  // Function to handle view button click
   const handleViewClick = (rowData) => {
     setSelectedRow(rowData);
     toggle();
   };
 
-  // Function to handle image click
   const handleImageClick = (image) => {
     setSelectedImage(image);
     toggleImageModal();
   };
 
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+
+  if (!Array.isArray(careers)) {
+    return <p>Error: Fetched data is not an array</p>;
+  }
+
   return (
     <React.Fragment>
       <div className="page-content">
         <div className="container-fluid">
-          <Breadcrumbs title="Tables" breadcrumbItem="Career Enquire " />
+          <Breadcrumbs title="Tables" breadcrumbItem="Career Enquire" />
 
           <Row>
             <Col>
@@ -60,27 +83,22 @@ const Careeertable = () => {
                       <Table id="tech-companies-1" className="table table-striped table-bordered">
                         <Thead>
                           <Tr>
-                            <Th data-priority="1">Enquire ID</Th>
-                            <Th data-priority="1">Property ID</Th>
-                            <Th data-priority="1">Description</Th>
-                            <Th data-priority="3">Image</Th>
-                            <Th data-priority="3"></Th>
+                            <Th data-priority="1">Position</Th>
+                            <Th data-priority="1">Full Name</Th>
+                            <Th data-priority="1">Degree Level</Th>
+                            <Th data-priority="3">Resume</Th>
+                            <Th data-priority="3">Actions</Th>
                           </Tr>
                         </Thead>
                         <Tbody>
-                          {janTopSellingData.map((rowData, index) => (
+                          {careers.map((rowData, index) => (
                             <Tr key={index}>
-                              <Th>{rowData.property}</Th>
-                              <Td>{rowData.enquire}</Td>
-                              <Td>{rowData.name}</Td>
-                              <Td className="">
-                                <img
-                                  src={logoSvg}
-                                  alt=""
-                                  height="24"
-                                  onClick={() => handleImageClick(logoSvg)}
-                                  style={{ cursor: "pointer" }}
-                                />
+                              <Th>{rowData.position}</Th>
+                              <Td>{rowData.fullName}</Td>
+                              <Td>{rowData.degreeLevel}</Td>
+                              <Td>
+                              <a href={rowData.resumeUrl} target="_blank" rel="noopener noreferrer">
+                              <img src={pdf} width={50}/></a>
                               </Td>
                               <Td className="d-flex align-items-center justify-content-center">
                                 <Button onClick={() => handleViewClick(rowData)} className="btn btn-primary">
@@ -105,11 +123,16 @@ const Careeertable = () => {
         <ModalBody>
           {selectedRow && (
             <div>
-              <p><strong>Enquire ID:</strong> {selectedRow.property}</p>
-              <p><strong>Property ID:</strong> {selectedRow.enquire}</p>
-              <p><strong>Name:</strong> {selectedRow.name}</p>
-              <p><strong>Phone Number:</strong> <Link to={`tel:${selectedRow.phone}`}>{selectedRow.phone}</Link></p>
-              <p><strong>Email:</strong> <Link to={`mailto:${selectedRow.email}`}>{selectedRow.email}</Link></p>
+              <p><strong>Position:</strong> {selectedRow.position}</p>
+              <p><strong>Full Name:</strong> {selectedRow.fullName}</p>
+              <p><strong>Degree Level:</strong> {selectedRow.degreeLevel}</p>
+              <p><strong>Gender:</strong> {selectedRow.gender}</p>
+              <p><strong>Email Address:</strong> {selectedRow.emailAddress}</p>
+              <p><strong>Nationality:</strong> {selectedRow.nationality}</p>
+              <p><strong>Career Level:</strong> {selectedRow.careerLevel}</p>
+              <p><strong>Job Duties:</strong> {selectedRow.jobDuties}</p>
+              <p><strong>Additional Info:</strong> {selectedRow.additionalInfo}</p>
+              <p><strong>Resume URL:</strong> <a href={selectedRow.resumeUrl} target="_blank" rel="noopener noreferrer">{selectedRow.resumeUrl}</a></p>
             </div>
           )}
         </ModalBody>

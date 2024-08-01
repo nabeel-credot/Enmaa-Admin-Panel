@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:4000/api/home';
+const API_URL = 'http://localhost:4001/api/cms';
 
 export const getTableData = async () => {
   try {

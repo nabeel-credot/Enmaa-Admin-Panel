@@ -4,7 +4,7 @@ import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import Breadcrumbs from './../../../components/Common/Breadcrumb';
 import { Link } from 'react-router-dom';
-import { getTableData, updateTableData, updateTableDataById } from './../../../common/api/homeapi.js';
+import { getTableData, updateTableData, updateTableDataById } from './../../../api/homeapi.js';
 
 const Hometable = () => {
   document.title = 'Responsive Table | enmaa.com';
@@ -25,12 +25,13 @@ const Hometable = () => {
     const fetchData = async () => {
       try {
         const data = await getTableData();
-        setTableData(data);
+        const filteredData = data.filter(row => row.page === "home");
+        setTableData(filteredData);
       } catch (error) {
         console.error('Failed to fetch table data:', error);
       }
     };
-
+  
     fetchData();
   }, []);
 
@@ -135,7 +136,7 @@ const Hometable = () => {
               </div>
             </Col>
             <div className="d-flex justify-content-end gap-3 p-4">
-              <Link to="/form-elements" className="d-flex align-items-center gap-1 btn btn-success" onClick={handleUpdate}>
+              <Link to=" " className="d-flex align-items-center gap-1 btn btn-success" onClick={handleUpdate}>
                 <i className="mdi mdi-content-save"></i>Update
               </Link>
             </div>
@@ -164,13 +165,14 @@ const Hometable = () => {
                           </Tr>
                         </Thead>
                         <Tbody>
+                        {/* {tableData.filter(rowData => rowData.page === "home").map((rowData, index) => ( */}
                           {tableData.map((rowData, index) => (
                             <Tr key={index}>
                               <Th>{rowData.section}</Th>
                               <Td>{rowData.title_en}</Td>
                               <Td>{rowData.title_ar}</Td>
                               <Td className="w-30 h-20 overflow-hidden">{rowData.description_en}</Td>
-                              <img src={`http://localhost:4000/${rowData.bannerImage}`} alt="Banner Image" width={200} />
+                              <img src={`http://localhost:4001/media/${rowData.bannerImage}`} alt="Banner Image" width={200} />
                               <Td>
                                 <div className="form-check form-switch">
                                   <Input

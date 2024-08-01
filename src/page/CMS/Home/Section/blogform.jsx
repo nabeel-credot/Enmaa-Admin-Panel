@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Col, Input, Label, Row } from 'reactstrap';
 import { Card, CardBody, CardHeader, Container, Button } from "reactstrap";
 import { Link } from "react-router-dom";
-import Breadcrumbs from './../../../../components/Common/Breadcrumb';
+import Breadcrumbs from '../../../../components/Common/Breadcrumb';
 import Select from 'react-select';
 
 const Section11form = () => {
@@ -42,7 +42,7 @@ const Section11form = () => {
                             <Link to="/home" className="icon-demo-content mb-4">
                                 <i className="fas fa-arrow-left"></i>
                             </Link>
-                            <Breadcrumbs title="Forms" breadcrumbItem="Section 11" />
+                            <Breadcrumbs title="Forms" breadcrumbItem="blog Form" />
                         </div>
                         <div className="d-flex flex-end gap-3 p-4">
                             <Link to="/form-elements" className="d-flex align-items-center gap-2 btn btn-outline-light">

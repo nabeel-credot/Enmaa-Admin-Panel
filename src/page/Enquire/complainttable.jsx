@@ -1,36 +1,52 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Col, Card, CardBody, CardHeader, Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
-import { janTopSellingData } from "../../common/data";
-import logoSvg from "../../assets/images/logo-sm.png";
 import { Link } from "react-router-dom";
-const complainttable = () => {
-  //meta title
-  // Meta title
-  document.title = "Responsive Table | enmaa.com";
+import { getCompliants } from './../../api/getapi.js';
 
-  // State to manage modal visibility
+const ComplaintTable = () => {
+  const [complaints, setComplaints] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [modal, setModal] = useState(false);
-
-  // State to store selected row data
   const [selectedRow, setSelectedRow] = useState(null);
 
-  // Function to toggle modal visibility
+  useEffect(() => {
+    const fetchComplaints = async () => {
+      try {
+        const data = await getCompliants();
+        console.log('Fetched complaints data:', data); 
+        setComplaints(data.Complaint || []); 
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchComplaints();
+  }, []);
+
   const toggle = () => setModal(!modal);
 
-  // Function to handle view button click
   const handleViewClick = (rowData) => {
     setSelectedRow(rowData);
     toggle();
   };
 
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+
+  if (!Array.isArray(complaints)) {
+    return <p>Error: Fetched data is not an array</p>;
+  }
+
   return (
     <React.Fragment>
       <div className="page-content">
         <div className="container-fluid">
-          <Breadcrumbs title="Tables" breadcrumbItem="Complaint Enquire " />
+          <Breadcrumbs title="Tables" breadcrumbItem="Complaint Enquire" />
 
           <Row>
             <Col>
@@ -45,22 +61,26 @@ const complainttable = () => {
                       <Table id="tech-companies-1" className="table table-striped table-bordered">
                         <Thead>
                           <Tr>
-                            <Th data-priority="1">Enquire ID</Th>
-                            <Th data-priority="1">Name</Th>
-                            <Th data-priority="1">Position</Th>
-                            <Th data-priority="3">CV</Th>
-                            <Th data-priority="3"></Th>
+                            <Th data-priority="1">Description</Th>
+                            <Th data-priority="1">Contact Number</Th>
+                            <Th data-priority="1">Civil ID</Th>
+                            <Th data-priority="1">First Name</Th>
+                            <Th data-priority="1">Last Name</Th>
+                            <Th data-priority="1">Phone Number</Th>
+                            <Th data-priority="1">Email Address</Th>
+                            <Th data-priority="3">Actions</Th>
                           </Tr>
                         </Thead>
                         <Tbody>
-                          {janTopSellingData.map((rowData, index) => (
+                          {complaints.map((rowData, index) => (
                             <Tr key={index}>
-                              <Th>{rowData.property}</Th>
-                              <Td>{rowData.enquire}</Td>
-                              <Td>{rowData.name}</Td>
-                              <Td className="">
-                                <img src={logoSvg} alt="" height="24" />
-                              </Td>
+                              <Td>{rowData.description}</Td>
+                              <Td>{rowData.contactNumber}</Td>
+                              <Td>{rowData.civilId}</Td>
+                              <Td>{rowData.firstName}</Td>
+                              <Td>{rowData.lastName}</Td>
+                              <Td>{rowData.phoneNumber}</Td>
+                              <Td>{rowData.emailAddress}</Td>
                               <Td className="d-flex align-items-center justify-content-center">
                                 <Button onClick={() => handleViewClick(rowData)} className="btn btn-primary">
                                   View
@@ -69,13 +89,6 @@ const complainttable = () => {
                             </Tr>
                           ))}
                         </Tbody>
-                        {/* <Pagination
-                          perPageData={perPageData}
-                          data={tabledata}
-                          currentPage={currentPage}
-                          setCurrentPage={setCurrentPage}
-                          currentData={tabledata}
-                          className="d-flex align-items-center justify-content-between text-center text-sm-start mb-3" /> */}
                       </Table>
                     </div>
                   </div>
@@ -87,17 +100,17 @@ const complainttable = () => {
       </div>
 
       <Modal isOpen={modal} toggle={toggle}>
-        <ModalHeader toggle={toggle}>Enquiry Details</ModalHeader>
+        <ModalHeader toggle={toggle}>Complaint Details</ModalHeader>
         <ModalBody>
           {selectedRow && (
             <div>
-              <p><strong>Enquire ID:</strong> {selectedRow.property}</p>
-              <p><strong>Property ID:</strong> {selectedRow.enquire}</p>
-              <p><strong>Name:</strong> {selectedRow.name}</p>
-              <p><strong>Phone Number:</strong>   <Link to={`tel:${selectedRow.phone}`}>{selectedRow.phone}</Link>
-              </p>
-              <p><strong>Email:</strong>  <Link to={`mailto:${selectedRow.email}`}>{selectedRow.email}</Link></p>
-
+              <p><strong>Description:</strong> {selectedRow.description}</p>
+              <p><strong>Contact Number:</strong> {selectedRow.contactNumber}</p>
+              <p><strong>Civil ID:</strong> {selectedRow.civilId}</p>
+              <p><strong>First Name:</strong> {selectedRow.firstName}</p>
+              <p><strong>Last Name:</strong> {selectedRow.lastName}</p>
+              <p><strong>Phone Number:</strong> <Link to={`tel:${selectedRow.phoneNumber}`}>{selectedRow.phoneNumber}</Link> </p>
+              <p><strong>Email Address:</strong> <Link to={`mailto:${selectedRow.emailAddress}`}>{selectedRow.emailAddress}</Link></p>
             </div>
           )}
         </ModalBody>
@@ -109,4 +122,4 @@ const complainttable = () => {
   );
 };
 
-export default complainttable
+export default ComplaintTable;

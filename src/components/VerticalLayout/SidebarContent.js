@@ -240,10 +240,10 @@ const SidebarContent = props => {
               </Link>
               <ul className="sub-menu">
                 <li>
-                  <Link to="/">{props.t("Navbar Menu")}</Link>
+                  <Link to="/navbar">{props.t("Navbar Menu")}</Link>
                 </li>
                 <li>
-                  <Link to="/">{props.t("Footer Menu")}</Link>
+                  <Link to="/footer">{props.t("Footer Menu")}</Link>
                 </li>
               </ul>
             </li>

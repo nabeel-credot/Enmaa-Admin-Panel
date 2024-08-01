@@ -3,9 +3,8 @@ import axios from 'axios';
 import { Col, Input, Label, Row, Container, Card, CardBody, CardHeader, Button } from 'reactstrap';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import Breadcrumbs from './../../../../components/Common/Breadcrumb.js';
-import { getTableDataById, updateTableDataById } from './../../../../common/api/homeapi.js';
-import FormUpload from './../../../../pages/Forms/FormUpload.js';
-
+import { getTableDataById, updateTableDataById } from './../../../../api/homeapi.js';
+import FormUpload from'./../../../../pages/Forms/FormUpload.js';
 const Section1 = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -56,10 +55,10 @@ const Section1 = () => {
   const handleFileUpload = async (files, key, isNested = false, nestedKey = '') => {
     if (files.length > 0) {
       const fileData = new FormData();
-      fileData.append('file', files[0]);
+      fileData.append('media', files[0]);
 
       try {
-        const response = await axios.post('http://localhost:4000/api/upload-images', fileData, {
+        const response = await axios.post('http://localhost:4001/api/media', fileData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
@@ -94,7 +93,7 @@ const Section1 = () => {
       };
       await updateTableDataById(id, updatedData);
       alert('Data updated successfully');
-      navigate('/home');  // Redirect to /home after successful save
+      navigate('/home');  
     } catch (error) {
       console.error('Failed to update data:', error);
     }
@@ -235,7 +234,7 @@ const Section1 = () => {
                                 <FormUpload
                                   name={`${key} Image`}
                                   onFileUpload={(files) => handleFileUpload(files, key, true, nestedKey)}
-                                  existingImage={`http://localhost:4000/${formData[key][nestedKey]}`}
+                                  existingImage={`http://localhost:4001/${formData[key][nestedKey]}`}
                                 />
                               </Col>
                             );
